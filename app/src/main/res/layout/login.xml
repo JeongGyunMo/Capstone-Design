@@ -6,43 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <EditText
+        android:id="@+id/ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.246" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:orientation="vertical">
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ID"
+        app:layout_constraintVertical_bias="0.046" />
 
-            <EditText
-                android:id="@+id/editText15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <EditText
-                android:id="@+id/editText16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:ems="10"
-                android:inputType="textPassword" />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:text="Button" />
-
-        </LinearLayout>
-    </ScrollView>
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password"
+        app:layout_constraintVertical_bias="0.066" />
 </android.support.constraint.ConstraintLayout>
