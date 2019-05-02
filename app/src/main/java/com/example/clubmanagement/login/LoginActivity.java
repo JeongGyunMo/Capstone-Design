@@ -3,9 +3,11 @@ package com.example.clubmanagement.login;
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,10 +20,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
 
 public class LoginActivity extends AppCompatActivity {
-
     private LoginViewModel loginViewModel;
 
         @Override
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
+                Intent intent = new Intent(LoginActivity.this, FragmentStart.class);
                 if (loginResult == null) {
                     return;
                 }
@@ -66,9 +69,9 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-
                 //Complete and destroy login activity once successful
-                finish();
+                startActivity(intent);
+                //finish();
             }
         });
 
@@ -82,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // ignore
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
@@ -106,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
