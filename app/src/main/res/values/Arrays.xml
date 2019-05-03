@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="major">
+        <item>학술</item>
+        <item>운동</item>
+        <item>기타</item>
+    </string-array>
+
+</resources>
