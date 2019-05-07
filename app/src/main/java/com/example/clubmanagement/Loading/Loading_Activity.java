@@ -26,19 +26,19 @@ import com.example.clubmanagement.login.LoginActivity;
 
 import static java.lang.Thread.sleep;
 
-public class Loading_Activity extends AppCompatActivity {
+public class Loading_Activity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.loading);
         try{
-            sleep(1000);
+            sleep(4000);
         }
-        catch (Exception e){System.out.print(e);}
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
 
-        Intent intent = new Intent(Loading_Activity.this, LoginActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
