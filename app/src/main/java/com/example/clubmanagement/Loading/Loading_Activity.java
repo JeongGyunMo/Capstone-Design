@@ -33,7 +33,7 @@ public class Loading_Activity extends Activity {
         super.onCreate(savedInstanceState);
 
         try{
-            sleep(4000);
+            sleep(2000);
         }
         catch (InterruptedException e){
             e.printStackTrace();
