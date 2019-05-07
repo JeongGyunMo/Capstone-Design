@@ -29,7 +29,7 @@ public class PageTwoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v = inflater.inflate(R.layout.fragment_page_one, container, false);
+        View v = inflater.inflate(R.layout.fragment_page_two, container, false);
 
         Spinner checkSpinner = (Spinner) v.findViewById(R.id.spinner_Check);
         ArrayAdapter Adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.major, android.R.layout.simple_spinner_item);
