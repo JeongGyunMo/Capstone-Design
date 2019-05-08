@@ -35,6 +35,8 @@ public class PageTwoFragment extends Fragment {
         ArrayAdapter Adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.major, android.R.layout.simple_spinner_item);
         Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         checkSpinner.setAdapter(Adapter);
+
+
         return v;
     }
 

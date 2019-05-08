@@ -30,11 +30,11 @@ public class TestPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position){
         switch (position){
             case 0:
-                return "전공";
+                return "가입된 동아리";
             case 1:
-                return "중동";
+                return "전공 동아리";
             case 2:
-                return "옵션";
+                return "중앙 동아리";
             default:
                 return null;
         }
