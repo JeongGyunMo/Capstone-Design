@@ -1,8 +1,12 @@
-package com.example.clubmanagement.Fragment;
+package com.example.clubmanagement.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.clubmanagement.Fragment.PageOneFragment;
+import com.example.clubmanagement.Fragment.PageThreeFragment;
+import com.example.clubmanagement.Fragment.PageTwoFragment;
 import com.example.clubmanagement.R;
 
 public class TestPagerAdapter extends FragmentPagerAdapter {

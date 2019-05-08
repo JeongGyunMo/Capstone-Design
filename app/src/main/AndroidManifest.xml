@@ -20,5 +20,6 @@
         </activity>
         <activity android:name = ".Fragment.FragmentStart"     />
         <activity android:name=".login.LoginActivity"/>
+
     </application>
 </manifest>
