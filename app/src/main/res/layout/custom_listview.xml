@@ -13,7 +13,8 @@
         android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/title"
@@ -21,13 +22,15 @@
             android:layout_weight="1"
             android:text="정주일 바램"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="0dp"
+            />
 
         <TextView
             android:id="@+id/context"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="0dp"
+            />
     </LinearLayout>
 
 </LinearLayout>

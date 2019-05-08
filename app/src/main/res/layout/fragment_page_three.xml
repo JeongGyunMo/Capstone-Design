@@ -53,9 +53,9 @@
             <ListView
                 android:id="@+id/List_view"
                 android:layout_width="match_parent"
-                android:layout_height="618dp">
-
-            </ListView>
+                android:layout_height="618dp"
+                android:listSelector="@color/colorAccent"/>
+                />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

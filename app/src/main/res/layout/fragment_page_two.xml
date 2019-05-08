@@ -52,10 +52,8 @@
             <ListView
                 android:id="@+id/List_view"
                 android:layout_width="match_parent"
-                android:layout_height="611dp">
-
-            </ListView>
-
+                android:layout_height="611dp"
+                android:listSelector="@drawable/list_bg"/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
