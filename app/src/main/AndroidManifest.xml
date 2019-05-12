@@ -22,5 +22,7 @@
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".Popup.PopupActivity" android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Form.Application_Form"/>
+        <activity android:name=".Database.Test"/>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

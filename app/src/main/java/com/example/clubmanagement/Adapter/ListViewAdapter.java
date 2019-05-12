@@ -1,17 +1,21 @@
 package com.example.clubmanagement.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PaintDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.clubmanagement.Club_Home.Club_Home;
 import com.example.clubmanagement.ListVO.ListVO;
 import com.example.clubmanagement.R;
 import java.util.ArrayList;
@@ -54,6 +58,8 @@ public class ListViewAdapter extends BaseAdapter {
         title.setText(listViewItem.getTitle());
         Context.setText(listViewItem.getContext());
         //Toast.makeText(context, (pos + 1) + "번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+        Club_Home ch = new Club_Home();
+
 
         return convertView;
     }
@@ -76,8 +82,8 @@ public class ListViewAdapter extends BaseAdapter {
 
         item.setImg(icon);
         item.setTitle(title);
-        item.setContext(desc);
 
+        item.setContext(desc);
         listVO.add(item);
     }
 }

@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clubmanagement.Database.Test;
 import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
 
@@ -69,9 +70,9 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-                //Complete and destroy login activity once successful
+                //intent = new Intent(LoginActivity.this, Test.class);
                 startActivity(intent);
-                //finish();
+
             }
         });
 

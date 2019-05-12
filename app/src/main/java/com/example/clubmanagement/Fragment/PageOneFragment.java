@@ -13,9 +13,9 @@ import com.example.clubmanagement.R;
 public class PageOneFragment extends Fragment {
     private ListView listview ;
     private ListViewAdapter adapter;
-    private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three};
-    private String[] Title = {"정준일 하이","윤종신 좋니","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄"};
-    private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄"};
+    private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.one};
+    private String[] Title = {"정준일 하이","윤종신 좋니","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","gkskej"};
+    private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","하나더"};
 
     public static PageOneFragment newInstance(){
         Bundle args = new Bundle();

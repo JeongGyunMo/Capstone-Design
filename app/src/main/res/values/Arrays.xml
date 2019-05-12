@@ -2,8 +2,12 @@
 <resources>
 
     <string-array name="major">
+        <item>전체</item>
         <item>학술</item>
         <item>운동</item>
+        <item>봉사</item>
+        <item>문화</item>
+        <item>종교</item>
         <item>기타</item>
     </string-array>
 </resources>
