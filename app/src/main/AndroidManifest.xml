@@ -21,5 +21,6 @@
         <activity android:name = ".Fragment.FragmentStart"     />
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".Popup.PopupActivity" android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".Form.Application_Form"/>
     </application>
 </manifest>

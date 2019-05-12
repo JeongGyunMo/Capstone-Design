@@ -5,61 +5,44 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content">
 
-    <!-- 타이틀바 -->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Notice"
-            android:textSize="20sp"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:background="#ff7a00"
-            android:layout_width="match_parent"
-            android:layout_height="53dp" />
-    </LinearLayout>
-    <!-- //end 타이틀바 -->
-
-    <!-- Notice -->
-    <LinearLayout
-        android:padding="24dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/txtText"
-            android:textSize="15sp"
-            android:textColor="#000"
-            android:alpha="0.87"
-            android:gravity="center"
-            android:layout_marginBottom="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <!-- Notice -->
-
-    <View
-        android:background="#66bdbdbd"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
     <!-- 닫기 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="552dp"
+        android:background="@drawable/poster_sample"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+    </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
-            android:text="확인"
-            android:textSize="15sp"
-            android:textColor="#ff7a00"
-            android:padding="16dp"
-            android:gravity="center"
-            android:background="#00000000"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="53dp"
-            android:onClick="mOnClose"/>
+            android:background="#00000000"
+            android:gravity="left"
+            android:onClick="mNo"
+            android:padding="16dp"
+            android:text="취소"
+            android:textAlignment="center"
+            android:textColor="#ff7a00"
+            android:textSize="15sp" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="53dp"
+            android:background="#00000000"
+            android:gravity="right"
+            android:onClick="mYES"
+            android:padding="16dp"
+            android:text="확인"
+            android:textAlignment="center"
+            android:textColor="#ff7a00"
+            android:textSize="15sp" />
     </LinearLayout>
-    <!--// 닫기 버튼 -->
 </LinearLayout>

@@ -47,8 +47,6 @@
                 android:listSelector="@drawable/list_bg"
                 />
 
-
-
             <LinearLayout
                 android:paddingBottom="8dp"
                 android:orientation="horizontal"

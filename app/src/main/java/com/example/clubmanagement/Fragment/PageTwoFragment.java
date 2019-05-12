@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Popup.PopupActivity;
 import com.example.clubmanagement.R;
-import com.example.clubmanagement.login.LoginActivity;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -78,8 +77,6 @@ public class PageTwoFragment extends Fragment {
         popUp.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent();
-                //Toast.makeText(getActivity(),"번째 리스트가 .", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), PopupActivity.class);
                 intent.putExtra("data", "Test Popup");
                 startActivityForResult(intent, 1);
@@ -87,19 +84,6 @@ public class PageTwoFragment extends Fragment {
             }
         }) ;
     }
-
-    /*
-    public void mOnPopupClick(View v){
-        //데이터 담아서 팝업(액티비티) 호출
-        txtResult = (TextView)v.findViewById(R.id.txtResult);
-        //Intent intent = new Intent(LoginActivity.this, FragmentStart.class);
-        Intent intent = new Intent();
-        //Intent intent = new Intent(this, PopupActivity.class);
-
-        intent.putExtra("data", "Test Popup");
-        startActivityForResult(intent, 1);
-    }
-    */
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -111,5 +95,4 @@ public class PageTwoFragment extends Fragment {
             }
         }
     }
-
 }

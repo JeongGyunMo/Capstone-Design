@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.example.clubmanagement.Form.Application_Form;
 import com.example.clubmanagement.R;
 
 public class PopupActivity extends Activity {
@@ -18,19 +19,22 @@ public class PopupActivity extends Activity {
         super.onCreate(savedInstanceState);
         //타이틀바 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-    setContentView(R.layout.popup_activity);
+        setContentView(R.layout.popup_activity);
+    }
 
-    //UI 객체생성
-    txtText = (TextView)findViewById(R.id.txtText);
+    // 버튼 클릭
+    public void mYES(View v){
+        //데이터 전달하기
+        Intent intent = new Intent(this, Application_Form.class);
+        startActivity(intent);
+        //intent.putExtra("result", "Close Popup");
+        //setResult(RESULT_OK, intent);
 
-    //데이터 가져오기
-    Intent intent = getIntent();
-    String data = intent.getStringExtra("data");
-        txtText.setText(data);
-}
-
-    //확인 버튼 클릭
-    public void mOnClose(View v){
+        //액티비티(팝업) 닫기
+        finish();
+    }
+    // 취소 클릭
+    public void mNo(View v){
         //데이터 전달하기
         Intent intent = new Intent();
         intent.putExtra("result", "Close Popup");
