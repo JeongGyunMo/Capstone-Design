@@ -28,7 +28,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:onClick="mOnPopupClick"
                 android:orientation="horizontal">
 
                 <Spinner
@@ -44,8 +43,10 @@
             <ListView
                 android:id="@+id/List_view"
                 android:layout_width="match_parent"
-                android:layout_height="611dp"/>
+                android:layout_height="611dp"
                 android:listSelector="@drawable/list_bg"
+                />
+
 
 
             <LinearLayout
@@ -70,7 +71,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="가입"
-            android:onClick="mOnPopupClick"
+
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.75"
@@ -79,5 +80,6 @@
             app:layout_constraintVertical_bias="1.0"
 
             />
+        <!--android:onClick="mOnPopupClick"-->
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

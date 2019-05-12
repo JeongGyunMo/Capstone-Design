@@ -53,7 +53,7 @@ public class ListViewAdapter extends BaseAdapter {
         image.setImageDrawable(listViewItem.getImg());
         title.setText(listViewItem.getTitle());
         Context.setText(listViewItem.getContext());
-        Toast.makeText(context, (pos + 1) + "번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, (pos + 1) + "번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
 
         return convertView;
     }

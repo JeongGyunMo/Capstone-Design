@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class PageTwoFragment extends Fragment {
     private String[] Title = {"정준일 바램","윤종신 좋니","러블리즈 아츄"};
     private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡"};
     TextView txtResult;
+    Button popUp;
 
     public static PageTwoFragment newInstance() {
         Bundle args = new Bundle();
@@ -63,20 +65,42 @@ public class PageTwoFragment extends Fragment {
         for(int i=0; i<img.length;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
-        //txtResult = (TextView)v.findViewById(R.id.txtResult);
+
+        txtResult = (TextView)v.findViewById(R.id.txtResult);
+        popUpStart(v);
+
 
         return v;
     }
+
+    private void popUpStart(View v) {
+        popUp = (Button) v.findViewById(R.id.button) ;
+        popUp.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent intent = new Intent();
+                //Toast.makeText(getActivity(),"번째 리스트가 .", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), PopupActivity.class);
+                intent.putExtra("data", "Test Popup");
+                startActivityForResult(intent, 1);
+
+            }
+        }) ;
+    }
+
+    /*
     public void mOnPopupClick(View v){
         //데이터 담아서 팝업(액티비티) 호출
+        txtResult = (TextView)v.findViewById(R.id.txtResult);
         //Intent intent = new Intent(LoginActivity.this, FragmentStart.class);
-        //Intent intent = new Intent();
+        Intent intent = new Intent();
         //Intent intent = new Intent(this, PopupActivity.class);
 
-        //intent.putExtra("data", "Test Popup");
-        //startActivityForResult(intent, 1);
+        intent.putExtra("data", "Test Popup");
+        startActivityForResult(intent, 1);
     }
-/*
+    */
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==1){
@@ -87,5 +111,5 @@ public class PageTwoFragment extends Fragment {
             }
         }
     }
-    */
+
 }

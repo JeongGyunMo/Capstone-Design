@@ -18,16 +18,16 @@ public class PopupActivity extends Activity {
         super.onCreate(savedInstanceState);
         //타이틀바 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.popup_activity);
+    setContentView(R.layout.popup_activity);
 
-        //UI 객체생성
-        txtText = (TextView)findViewById(R.id.txtText);
+    //UI 객체생성
+    txtText = (TextView)findViewById(R.id.txtText);
 
-        //데이터 가져오기
-        Intent intent = getIntent();
-        String data = intent.getStringExtra("data");
+    //데이터 가져오기
+    Intent intent = getIntent();
+    String data = intent.getStringExtra("data");
         txtText.setText(data);
-    }
+}
 
     //확인 버튼 클릭
     public void mOnClose(View v){
