@@ -1,5 +1,7 @@
 package com.example.clubmanagement.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -9,8 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.clubmanagement.Adapter.ListViewAdapter;
+import com.example.clubmanagement.Popup.PopupActivity;
 import com.example.clubmanagement.R;
+import com.example.clubmanagement.login.LoginActivity;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +30,7 @@ public class PageTwoFragment extends Fragment {
     private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three};
     private String[] Title = {"정준일 바램","윤종신 좋니","러블리즈 아츄"};
     private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡"};
+    TextView txtResult;
 
     public static PageTwoFragment newInstance() {
         Bundle args = new Bundle();
@@ -53,7 +63,29 @@ public class PageTwoFragment extends Fragment {
         for(int i=0; i<img.length;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
+        //txtResult = (TextView)v.findViewById(R.id.txtResult);
+
         return v;
     }
+    public void mOnPopupClick(View v){
+        //데이터 담아서 팝업(액티비티) 호출
+        //Intent intent = new Intent(LoginActivity.this, FragmentStart.class);
+        //Intent intent = new Intent();
+        //Intent intent = new Intent(this, PopupActivity.class);
 
+        //intent.putExtra("data", "Test Popup");
+        //startActivityForResult(intent, 1);
+    }
+/*
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                //데이터 받기
+                String result = data.getStringExtra("result");
+                txtResult.setText(result);
+            }
+        }
+    }
+    */
 }
