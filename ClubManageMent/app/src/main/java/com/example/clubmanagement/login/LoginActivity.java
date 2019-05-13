@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clubmanagement.Database.CLUB_DAO;
 import com.example.clubmanagement.Database.Test;
 import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-                //intent = new Intent(LoginActivity.this, Test.class);
+                intent = new Intent(LoginActivity.this, CLUB_DAO.class);
                 startActivity(intent);
 
             }

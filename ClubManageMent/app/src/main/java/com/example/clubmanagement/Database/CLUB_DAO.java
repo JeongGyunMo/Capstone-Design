@@ -25,6 +25,7 @@ public class CLUB_DAO extends Activity {
     private static final String CLUB_ID = "CLUB_ID";
     private static final String CLUB_NM = "CLUB_NM";
     private static final String CLUB_GB_CD = "CLUB_GB_CD";
+    /*
     private static final String CLUB_AT_CD = "CLUB_AT_CD";
     private static final String CLUB_CNT = "CLUB_CNT";
     private static final String CLUB_AIM = "CLUB_AIM";
@@ -41,6 +42,7 @@ public class CLUB_DAO extends Activity {
     private static final String UPDATE_ID = "UPDATE_ID";
     private static final String UPDATE_IP = "UPDATE_IP";
     private static final String UPDATE_DATE = "UPDATE_DATE";
+    */
     JSONArray peoples = null;
     ArrayList<HashMap<String, String>> personList;
     ListView list;
@@ -48,20 +50,21 @@ public class CLUB_DAO extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.custom_listview);
+        setContentView(R.layout.dbtest);
         list = (ListView) findViewById(R.id.listView);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.0.11/PHP_connection.php"); //http://[현재자신의아이피]/PHP_connection.php
+        getData("http://192.168.0.11/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
     public void showList() {
         try {
-            JSONObject jsonObj = new JSONObject(myJSON);
-            peoples = jsonObj.getJSONArray(CLUB_ID);
             for (int i = 0; i < peoples.length(); i++) {
+                JSONObject jsonObj = new JSONObject(myJSON);
+                peoples = jsonObj.getJSONArray(CLUB_ID);
                 JSONObject c = peoples.getJSONObject(i);
                 String id = c.getString(CLUB_ID);
                 String nm = c.getString(CLUB_NM);
                 String gb_cd = c.getString(CLUB_GB_CD);
+                /*
                 String at_cd= c.getString(CLUB_AT_CD);
                 String cnt = c.getString(CLUB_CNT);
                 String aim = c.getString(CLUB_AIM);
@@ -78,10 +81,12 @@ public class CLUB_DAO extends Activity {
                 String update_id= c.getString(UPDATE_ID);
                 String update_ip = c.getString(UPDATE_IP);
                 String update_date= c.getString(UPDATE_DATE);
+                */
                 HashMap<String, String> persons = new HashMap<String, String>();
                 persons.put(CLUB_ID, id);
                 persons.put(CLUB_NM, nm);
                 persons.put(CLUB_GB_CD, gb_cd);
+                /*
                 persons.put(CLUB_AT_CD, at_cd);
                 persons.put(CLUB_CNT, cnt);
                 persons.put(CLUB_AIM, aim);
@@ -98,16 +103,13 @@ public class CLUB_DAO extends Activity {
                 persons.put(UPDATE_ID, update_ip);
                 persons.put(UPDATE_IP, update_ip);
                 persons.put(UPDATE_DATE, update_date);
+                */
                 personList.add(persons);
             }
             ListAdapter adapter = new SimpleAdapter(
                     CLUB_DAO.this, personList, R.layout.list_item,
-                    new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD,CLUB_AT_CD, CLUB_CNT,
-                            CLUB_AIM,CLUB_ACTIVE, CLUB_ROOM, OPEN_DT,INTRO_CONT,
-                            INTRO_FILE_NM, INTRO_FILE_PATH,INTRO_SAVE_FILE_NM,
-                            INPUT_ID,INPUT_IP,INPUT_DATE,UPDATE_ID,UPDATE_IP,UPDATE_DATE
-                    },
-                    new int[]{R.id.title, R.id.context}
+                    new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD},
+                    new int[]{R.id.id, R.id.name, R.id.address}
             );
             list.setAdapter(adapter);
         } catch (JSONException e) {

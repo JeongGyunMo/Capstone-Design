@@ -38,13 +38,15 @@ public class PageOneFragment extends Fragment {
         //어뎁터 할당
         listview.setAdapter(adapter);
         //adapter를 통한 값 전달
+/*
         CLUB_DAO sl = new CLUB_DAO();
         sl.showList();
-        /*
+*/
+/*
         for(int i=0; i<img.length;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
-        */
+*/
         return v;
     }
 
