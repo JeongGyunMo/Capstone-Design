@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.clubmanagement.Adapter.ListViewAdapter;
+import com.example.clubmanagement.Database.CLUB_DAO;
 import com.example.clubmanagement.R;
 
 public class PageOneFragment extends Fragment {
@@ -37,9 +38,13 @@ public class PageOneFragment extends Fragment {
         //어뎁터 할당
         listview.setAdapter(adapter);
         //adapter를 통한 값 전달
+        CLUB_DAO sl = new CLUB_DAO();
+        sl.showList();
+        /*
         for(int i=0; i<img.length;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
+        */
         return v;
     }
 

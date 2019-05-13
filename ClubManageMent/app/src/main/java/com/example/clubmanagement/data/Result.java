@@ -20,17 +20,17 @@ public class Result<T> {
         return "";
     }
 
-    // Success sub-class
-    public final static class Success<T> extends Result {
-        private T data;
+        // Success sub-class
+        public final static class Success<T> extends Result {
+            private T data;
 
-        public Success(T data) {
-            this.data = data;
-        }
+            public Success(T data) {
+                this.data = data;
+            }
 
-        public T getData() {
-            return this.data;
-        }
+            public T getData() {
+                return this.data;
+            }
     }
 
     // Error sub-class
