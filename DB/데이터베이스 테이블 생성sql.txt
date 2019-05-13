@@ -1,4 +1,4 @@
--- MySQL Workbench Forward Engineering
+﻿-- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -22,6 +22,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`CLUB` (
   `CLUB_NM` VARCHAR(100) NOT NULL COMMENT '클럽명',
   `CLUB_GB_CD` VARCHAR(6) NULL COMMENT '클럽구분코드: 중앙동아리, 과동아리',
   `CLUB_AT_CD` VARCHAR(6) NULL COMMENT '동아리 속성코드 ; 학술/ 운동',
+  `CLUB_CNT` INT NULL COMMENT '회원수',
+  `CLUB_AIM` VARCHAR(255) NULL COMMENT '설립목적',
+  `CLUB_ACTIVE` VARCHAR(255) NULL COMMENT '클럽 활동',
   `CLUB_ROOM` VARCHAR(100) NULL COMMENT '동아리 방',
   `OPEN_DT` VARCHAR(8) NULL COMMENT '개설일자',
   `INTRO_CONT` VARCHAR(255) NULL COMMENT '동아리소개',
@@ -44,9 +47,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`STUDENT` (
   `STUDENT_ID` VARCHAR(8) NOT NULL COMMENT '학생아이디',
   `PASSWORD` VARCHAR(50) NULL COMMENT '패스워드',
-  `ADDRESS` VARCHAR(50) NULL COMMENT '주소',
-  `MAJOR` VARCHAR(50) NULL COMMENT '전공',
-  `GRADE` VARCHAR(1) NULL COMMENT '학년',
+  `INPUT_ID` VARCHAR(45) NULL,
+  `INPUT_IP` VARCHAR(45) NULL,
+  `INPUT_DATE` DATETIME NULL,
+  `UPDATE_ID` VARCHAR(45) NULL,
+  `UPDATE_IP` VARCHAR(45) NULL,
+  `UPDATE_DATE` DATETIME NULL,
   PRIMARY KEY (`STUDENT_ID`))
 ENGINE = InnoDB;
 
@@ -58,6 +64,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`CLUB_MEMBER` (
   `CLUB_ID` INT NOT NULL COMMENT '동아리아이디',
   `STUDENT_ID` VARCHAR(8) NOT NULL COMMENT '학번',
   `NM` VARCHAR(100) NULL COMMENT '학생이름',
+  `MAJOR` VARCHAR(50) NULL COMMENT '전공',
+  `GRADE` VARCHAR(1) NULL COMMENT '학년',
+  `GENDER_CD` VARCHAR(2) NULL COMMENT '성별',
   `STAFF_CD` VARCHAR(6) NULL COMMENT '임원코드(회장, 부회장)',
   `PHONE_NO` VARCHAR(13) NULL COMMENT '전화번호',
   `POST_NO` VARCHAR(6) NULL COMMENT '우편번호',
@@ -67,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`CLUB_MEMBER` (
   `JOIN_DT` VARCHAR(8) NULL COMMENT '가입일자',
   `BIRTH_DT` VARCHAR(8) NULL COMMENT '생년월일',
   `ING_CD` VARCHAR(8) NULL COMMENT '재학코드 : 재학 퇴학 휴학 ',
+  `JOIN_CD` VARCHAR(1) NULL COMMENT '신청(승인관리)',
   `INPUT_ID` VARCHAR(45) NULL,
   `INPUT_IP` VARCHAR(45) NULL,
   `INPUT_DATE` DATETIME NULL,
@@ -84,72 +94,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`CLUB_MEMBER` (
   CONSTRAINT `fk_Club_Member_Hallym_Student1`
     FOREIGN KEY (`STUDENT_ID`)
     REFERENCES `mydb`.`STUDENT` (`STUDENT_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Club_List_has_Club_Member` //에러
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Club_List_has_Club_Member` (
-  `Club_List_ID` INT NOT NULL,
-  `Club_Member_Name` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`Club_List_ID`, `Club_Member_Name`),
-  INDEX `fk_Club_List_has_Club_Member_Club_Member1_idx` (`Club_Member_Name` ASC),
-  INDEX `fk_Club_List_has_Club_Member_Club_List_idx` (`Club_List_ID` ASC),
-  CONSTRAINT `fk_Club_List_has_Club_Member_Club_List`
-    FOREIGN KEY (`Club_List_ID`)
-    REFERENCES `mydb`.`CLUB` (`CLUB_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Club_List_has_Club_Member_Club_Member1`
-    FOREIGN KEY (`Club_Member_Name`)
-    REFERENCES `mydb`.`CLUB_MEMBER` (`NM`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Club_List_has_Club_List`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Club_List_has_Club_List` (
-  `Club_List_ID` INT NOT NULL,
-  `Club_List_ID1` INT NOT NULL,
-  PRIMARY KEY (`Club_List_ID`, `Club_List_ID1`),
-  INDEX `fk_Club_List_has_Club_List_Club_List2_idx` (`Club_List_ID1` ASC),
-  INDEX `fk_Club_List_has_Club_List_Club_List1_idx` (`Club_List_ID` ASC),
-  CONSTRAINT `fk_Club_List_has_Club_List_Club_List1`
-    FOREIGN KEY (`Club_List_ID`)
-    REFERENCES `mydb`.`CLUB` (`CLUB_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Club_List_has_Club_List_Club_List2`
-    FOREIGN KEY (`Club_List_ID1`)
-    REFERENCES `mydb`.`CLUB` (`CLUB_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Club_List_has_Club_Member1` //에러
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Club_List_has_Club_Member1` (
-  `Club_List_ID` INT NOT NULL,
-  `Club_Member_Name` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`Club_List_ID`, `Club_Member_Name`),
-  INDEX `fk_Club_List_has_Club_Member1_Club_Member1_idx` (`Club_Member_Name` ASC) ,
-  INDEX `fk_Club_List_has_Club_Member1_Club_List1_idx` (`Club_List_ID` ASC) ,
-  CONSTRAINT `fk_Club_List_has_Club_Member1_Club_List1`
-    FOREIGN KEY (`Club_List_ID`)
-    REFERENCES `mydb`.`CLUB` (`CLUB_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Club_List_has_Club_Member1_Club_Member1`
-    FOREIGN KEY (`Club_Member_Name`)
-    REFERENCES `mydb`.`CLUB_MEMBER` (`NM`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -219,6 +163,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`RESTAURANT` (
   `LATITUTE` VARCHAR(20) NULL COMMENT '위도',
   `LONGITUDE` VARCHAR(20) NULL COMMENT '경도',
   `USE_YN` VARCHAR(1) NULL COMMENT '사용여부',
+  `CLICK_CNT` INT NULL COMMENT '클릭 횟수',
   `INPUT_ID` VARCHAR(45) NULL,
   `INPUT_IP` VARCHAR(45) NULL,
   `INPUT_DATE` DATETIME NULL,
