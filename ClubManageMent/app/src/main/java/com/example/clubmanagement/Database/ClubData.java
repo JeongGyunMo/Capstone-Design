@@ -1,13 +1,6 @@
 package com.example.clubmanagement.Database;
 
-import android.os.Bundle;
-import android.app.Activity;
 import android.os.AsyncTask;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-
-import com.example.clubmanagement.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,25 +12,22 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Test extends Activity {
+public class ClubData{
     String myJSON;
     private static final String TAG_RESULTS = "result";
-    private static final String TAG_ID = "id";
-    private static final String TAG_NAME = "name";
-    //private static final String TAG_ADD = "address";
+    private static final String TAG_ID = "CLUB_ID";
+    private static final String TAG_NAME = "CLUB_NM";
+    private static final String TAG_ADD = "CLUB_GB_CD";
     JSONArray peoples = null;
     ArrayList<HashMap<String, String>> personList;
-    ListView list;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.dbtest);
-        list = (ListView) findViewById(R.id.listView);
+    public ClubData(){
+        peoples = null;
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.0.11/PHP_connection.php"); //http://[현재자신의아이피]/PHP_connection.php
+        getData("http://192.168.0.3/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
-    protected void showList() {
+
+    public ArrayList<HashMap<String, String>> GetListData() {
         try {
             JSONObject jsonObj = new JSONObject(myJSON);
             peoples = jsonObj.getJSONArray(TAG_RESULTS);
@@ -45,23 +35,24 @@ public class Test extends Activity {
                 JSONObject c = peoples.getJSONObject(i);
                 String id = c.getString(TAG_ID);
                 String name = c.getString(TAG_NAME);
-               // String address = c.getString(TAG_ADD);
+                String address = c.getString(TAG_ADD);
                 HashMap<String, String> persons = new HashMap<String, String>();
                 persons.put(TAG_ID, id);
                 persons.put(TAG_NAME, name);
-                //persons.put(TAG_ADD, address);
+                persons.put(TAG_ADD, address);
                 personList.add(persons);
+
             }
-            ListAdapter adapter = new SimpleAdapter(
-                    Test.this, personList, R.layout.list_item,
-                    new String[]{TAG_ID, TAG_NAME, /*TAG_ADD*/},
-                    new int[]{R.id.id, R.id.name/*, R.id.address*/}
-            );
-            list.setAdapter(adapter);
+            return personList;
+            //ListAdapter adapter = new SimpleAdapter(ClubData.this, personList, R.layout.list_item, new String[]{TAG_ID, TAG_NAME, TAG_ADD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
+            //list.setAdapter(adapter);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return personList;
     }
+
     public void getData(String url) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
             @Override
@@ -85,10 +76,12 @@ public class Test extends Activity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
-                showList();
             }
         }
         GetDataJSON g = new GetDataJSON();
+        g.onPostExecute("result");
+        g.doInBackground(url);
         g.execute(url);
+
     }
 }

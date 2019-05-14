@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,8 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.clubmanagement.Database.CLUB_DAO;
-import com.example.clubmanagement.Database.Test;
+import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
 
@@ -71,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-                intent = new Intent(LoginActivity.this, CLUB_DAO.class);
+                //intent = new Intent(LoginActivity.this, ClubData.class);
                 startActivity(intent);
 
             }

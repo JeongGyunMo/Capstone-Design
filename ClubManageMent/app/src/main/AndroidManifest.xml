@@ -22,8 +22,7 @@
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".Popup.PopupActivity" android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Form.Application_Form"/>
-        <activity android:name=".Database.CLUB_DAO"/>
-        <activity android:name=".Database.Test"/>
+        <activity android:name=".Club_Home.Club_Home"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
