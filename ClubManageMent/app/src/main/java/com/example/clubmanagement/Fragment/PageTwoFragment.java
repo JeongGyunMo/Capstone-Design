@@ -1,6 +1,5 @@
 package com.example.clubmanagement.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Popup.PopupActivity;
@@ -21,9 +19,6 @@ import com.example.clubmanagement.R;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PageTwoFragment extends Fragment {
     private ListView listview ;
     private ListViewAdapter adapter;
@@ -45,7 +40,6 @@ public class PageTwoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View v = inflater.inflate(R.layout.fragment_page_two, container, false);
 
         Spinner checkSpinner = (Spinner) v.findViewById(R.id.spinner_Check);
@@ -67,8 +61,6 @@ public class PageTwoFragment extends Fragment {
 
         txtResult = (TextView)v.findViewById(R.id.txtResult);
         popUpStart(v);
-
-
         return v;
     }
 

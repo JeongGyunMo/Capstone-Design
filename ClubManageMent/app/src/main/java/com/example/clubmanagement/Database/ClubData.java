@@ -15,43 +15,48 @@ import java.util.HashMap;
 public class ClubData{
     String myJSON;
     private static final String TAG_RESULTS = "result";
-    private static final String TAG_ID = "CLUB_ID";
-    private static final String TAG_NAME = "CLUB_NM";
-    private static final String TAG_ADD = "CLUB_GB_CD";
-    JSONArray peoples = null;
-    ArrayList<HashMap<String, String>> personList;
+    private static final String CLUB_ID = "CLUB_ID";
+    private static final String CLUB_NM = "CLUB_NM";
+    private static final String CLUB_GB_CD = "CLUB_GB_CD";
+    JSONArray JSON_Club_Item = null;
+    ArrayList<HashMap<String, String>> Club_Item_list;
 
     public ClubData(){
-        peoples = null;
-        personList = new ArrayList<HashMap<String, String>>();
+        JSON_Club_Item = null;
+        Club_Item_list = new ArrayList<HashMap<String, String>>();
         getData("http://192.168.0.3/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
     public ArrayList<HashMap<String, String>> GetListData() {
         try {
             JSONObject jsonObj = new JSONObject(myJSON);
-            peoples = jsonObj.getJSONArray(TAG_RESULTS);
-            for (int i = 0; i < peoples.length(); i++) {
-                JSONObject c = peoples.getJSONObject(i);
-                String id = c.getString(TAG_ID);
-                String name = c.getString(TAG_NAME);
-                String address = c.getString(TAG_ADD);
-                HashMap<String, String> persons = new HashMap<String, String>();
-                persons.put(TAG_ID, id);
-                persons.put(TAG_NAME, name);
-                persons.put(TAG_ADD, address);
-                personList.add(persons);
+            JSON_Club_Item = jsonObj.getJSONArray(TAG_RESULTS);
+            for (int i = 0; i < JSON_Club_Item.length(); i++) {
+                JSONObject c = JSON_Club_Item.getJSONObject(i);
+                String id = c.getString(CLUB_ID);
+                String name = c.getString(CLUB_NM);
+                String address = c.getString(CLUB_GB_CD);
+                HashMap<String, String> Club_Item = new HashMap<String, String>();
+                Club_Item.put(CLUB_ID, id);
+                Club_Item.put(CLUB_NM, name);
+                Club_Item.put(CLUB_GB_CD, address);
+                Club_Item_list.add(Club_Item);
 
             }
-            return personList;
-            //ListAdapter adapter = new SimpleAdapter(ClubData.this, personList, R.layout.list_item, new String[]{TAG_ID, TAG_NAME, TAG_ADD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
+            return Club_Item_list;
+            //ListAdapter adapter = new SimpleAdapter(ClubData.this, Club_Item_list, R.layout.list_item, new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
             //list.setAdapter(adapter);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return personList;
+        return Club_Item_list;
     }
+
+    public void ClearListData(){
+        Club_Item_list.clear();
+    }
+
 
     public void getData(String url) {
         class GetDataJSON extends AsyncTask<String, Void, String> {

@@ -1,8 +1,9 @@
 package com.example.clubmanagement.Fragment;
 
-
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,19 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.example.clubmanagement.Adapter.ListViewAdapter;
+import com.example.clubmanagement.Popup.PopupActivity;
 import com.example.clubmanagement.R;
 
+import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PageThreeFragment extends Fragment {
     private ListView listview ;
     private ListViewAdapter adapter;
     private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three};
     private String[] Title = {"정준일 바램","윤종신 좋니","러블리즈 아츄"};
     private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡"};
+    TextView txtResult;
+    Button popUp;
 
     public static PageThreeFragment newInstance() {
         Bundle args = new Bundle();
@@ -54,6 +58,32 @@ public class PageThreeFragment extends Fragment {
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
 
+        txtResult = (TextView)v.findViewById(R.id.txtResult);
+        popUpStart(v);
         return v;
+    }
+
+    private void popUpStart(View v) {
+        popUp = (Button) v.findViewById(R.id.button) ;
+        popUp.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PopupActivity.class);
+                intent.putExtra("data", "Test Popup");
+                startActivityForResult(intent, 1);
+
+            }
+        }) ;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                //데이터 받기
+                String result = data.getStringExtra("result");
+                txtResult.setText(result);
+            }
+        }
     }
 }

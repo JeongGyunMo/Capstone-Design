@@ -1,12 +1,15 @@
 package com.example.clubmanagement.Fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.R;
@@ -17,8 +20,8 @@ import java.util.HashMap;
 public class PageOneFragment extends Fragment {
     private ListView listview ;
     private ListViewAdapter adapter;
-    ArrayList<HashMap<String, String>> personList;
-    HashMap<String, String> persons = new HashMap<String, String>();
+    HashMap<String, String> Club_Item = new HashMap<String, String>();
+    ArrayList<HashMap<String, String>> Club_Item_list;
     private ClubData Cd = new ClubData();
 
     private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.one};
@@ -44,12 +47,14 @@ public class PageOneFragment extends Fragment {
 
         //어뎁터 할당
         listview.setAdapter(adapter);
-        personList = Cd.GetListData();
 
-        for(int i = 0 ; i<personList.size();i++){
-            persons = personList.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one),persons.get("CLUB_NM"),persons.get("CLUB_GB_CD"));
+        Cd.ClearListData();
+        Club_Item_list = Cd.GetListData();
+        Toast.makeText(getActivity(),"size = " + Club_Item_list.size(), Toast.LENGTH_LONG).show();
 
+        for(int i = 0; i< Club_Item_list.size(); i++){
+            Club_Item = Club_Item_list.get(i);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("CLUB_GB_CD"));
         }
 
         //adapter를 통한 값 전달
