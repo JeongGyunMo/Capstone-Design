@@ -24,7 +24,7 @@ public class Club_Member_Data{
     public Club_Member_Data(){
         JSON_Club_Item = null;
         Club_Item_list = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.0.3/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
+        getData("http://192.168.0.9/CLUB_bak.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
     public ArrayList<HashMap<String, String>> GetListData() {

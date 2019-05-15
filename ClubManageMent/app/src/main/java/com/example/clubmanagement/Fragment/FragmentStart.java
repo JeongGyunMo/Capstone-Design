@@ -17,7 +17,6 @@ public class FragmentStart extends AppCompatActivity {
         TestPagerAdapter mTestPagerAdapter = new TestPagerAdapter(getSupportFragmentManager());
         ViewPager mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mViewPager.setAdapter(mTestPagerAdapter);
-
         TabLayout mTab = (TabLayout) findViewById(R.id.tabs);
         mTab.setupWithViewPager(mViewPager);
 

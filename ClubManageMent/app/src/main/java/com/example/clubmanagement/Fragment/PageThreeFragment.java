@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Database.ClubData;
+import com.example.clubmanagement.Database.Club_Member_Data;
 import com.example.clubmanagement.Popup.PopupActivity;
 import com.example.clubmanagement.R;
 
@@ -62,9 +63,9 @@ public class PageThreeFragment extends Fragment {
         Cd.ClearListData();
         Club_Item_list = Cd.GetListData();
 
-        for(int i = 0; i< Club_Item_list.size(); i++){
+        for(int i = 0; i< Club_Item.size(); i++){
             Club_Item = Club_Item_list.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("CLUB_GB_CD"));
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
         }
         //어뎁터 할당
 /*
@@ -86,7 +87,6 @@ public class PageThreeFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), PopupActivity.class);
                 intent.putExtra("data", "Test Popup");
                 startActivityForResult(intent, 1);
-
             }
         }) ;
     }

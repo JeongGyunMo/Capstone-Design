@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Database.ClubData;
+import com.example.clubmanagement.Database.Club_Member_Data;
 import com.example.clubmanagement.R;
 
 import java.util.ArrayList;
@@ -22,11 +23,11 @@ public class PageOneFragment extends Fragment {
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
     ClubData Cd = new ClubData();
-
+/*
     private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.one};
     private String[] Title = {"정준일 하이","윤종신 좋니","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","gkskej"};
     private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","하나더"};
-
+*/
     public static PageOneFragment newInstance(){
         Bundle args = new Bundle();
         PageOneFragment fragment = new PageOneFragment();
@@ -48,12 +49,13 @@ public class PageOneFragment extends Fragment {
         listview.setAdapter(adapter);
 
         Cd.ClearListData();
-        Club_Item_list = Cd.GetListData();
-        Toast.makeText(getActivity(),"size = " + Club_Item_list.size(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(),"size = " + Club_Item.size(), Toast.LENGTH_LONG).show();
+
+        String temp  =Cd.Temp;
 
         for(int i = 0; i< Club_Item_list.size(); i++){
             Club_Item = Club_Item_list.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("CLUB_GB_CD"));
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
         }
 
         //adapter를 통한 값 전달

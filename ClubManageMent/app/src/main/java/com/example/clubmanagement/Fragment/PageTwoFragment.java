@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Database.ClubData;
+import com.example.clubmanagement.Database.Club_Member_Data;
 import com.example.clubmanagement.Popup.PopupActivity;
 import com.example.clubmanagement.R;
 
@@ -67,9 +68,9 @@ public class PageTwoFragment extends Fragment {
         Club_Item_list = Cd.GetListData();
 //        Toast.makeText(getActivity(),"size = " + Club_Item_list.size(), Toast.LENGTH_LONG).show();
 
-        for(int i = 0; i< Club_Item_list.size(); i++){
+        for(int i = 0; i< Club_Item.size(); i++){
             Club_Item = Club_Item_list.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.two), Club_Item.get("CLUB_NM"), Club_Item.get("CLUB_GB_CD"));
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.two), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
         }
 
 /*
