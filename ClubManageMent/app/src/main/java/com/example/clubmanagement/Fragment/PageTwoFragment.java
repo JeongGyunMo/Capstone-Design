@@ -33,7 +33,7 @@ public class PageTwoFragment extends Fragment {
     private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡"};
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData Cd = new ClubData();
+  //  ClubData Cd = new ClubData();
     TextView txtResult;
     Button popUp;
 
@@ -61,9 +61,9 @@ public class PageTwoFragment extends Fragment {
         listview = (ListView) v.findViewById(R.id.List_view);
 
         //어뎁터 할당
-        listview.setAdapter(adapter);
 
 
+/*
         Cd.ClearListData();
         Club_Item_list = Cd.GetListData();
 //        Toast.makeText(getActivity(),"size = " + Club_Item_list.size(), Toast.LENGTH_LONG).show();
@@ -72,13 +72,13 @@ public class PageTwoFragment extends Fragment {
             Club_Item = Club_Item_list.get(i);
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.two), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
         }
+*/
 
-/*
         //adapter를 통한 값 전달
         for(int i=0; i<img.length;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
-*/
+        listview.setAdapter(adapter);
         txtResult = (TextView)v.findViewById(R.id.txtResult);
         popUpStart(v);
         return v;

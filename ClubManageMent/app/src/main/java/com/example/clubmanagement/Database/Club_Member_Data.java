@@ -85,8 +85,9 @@ public class Club_Member_Data{
             }
         }
         GetDataJSON g = new GetDataJSON();
-        g.execute(url);
         g.onPostExecute("result");
         g.doInBackground(url);
+        g.execute(url);
+
     }
 }
