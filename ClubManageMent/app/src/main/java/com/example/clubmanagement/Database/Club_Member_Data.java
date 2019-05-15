@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ClubData{
+public class Club_Member_Data{
     String myJSON;
     private static final String TAG_RESULTS = "result";
     private static final String CLUB_ID = "CLUB_ID";
@@ -21,7 +21,7 @@ public class ClubData{
     public JSONArray JSON_Club_Item = null;
     public ArrayList<HashMap<String, String>> Club_Item_list;
 
-    public ClubData(){
+    public Club_Member_Data(){
         JSON_Club_Item = null;
         Club_Item_list = new ArrayList<HashMap<String, String>>();
         getData("http://192.168.0.3/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php

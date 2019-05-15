@@ -1,7 +1,6 @@
 package com.example.clubmanagement.Fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
@@ -22,7 +21,7 @@ public class PageOneFragment extends Fragment {
     private ListViewAdapter adapter;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    private ClubData Cd = new ClubData();
+    ClubData Cd = new ClubData();
 
     private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.three,R.drawable.one};
     private String[] Title = {"정준일 하이","윤종신 좋니","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","러블리즈 아츄","gkskej"};
