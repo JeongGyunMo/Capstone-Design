@@ -46,7 +46,6 @@ public class PageOneFragment extends Fragment {
 
         //어뎁터 할당
         listview.setAdapter(adapter);
-
         Cd.ClearListData();
         Club_Item_list = Cd.GetListData();
         Toast.makeText(getActivity(),"size = " + Club_Item_list.size(), Toast.LENGTH_LONG).show();

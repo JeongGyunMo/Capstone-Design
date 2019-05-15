@@ -32,7 +32,7 @@ public class PageThreeFragment extends Fragment {
     private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡"};
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData Cd = new ClubData();
+   // ClubData Cd = new ClubData();
     TextView txtResult;
     Button popUp;
 
@@ -57,8 +57,8 @@ public class PageThreeFragment extends Fragment {
         //변수 초기화
         adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
-        listview.setAdapter(adapter);
 
+/*
         Cd.ClearListData();
         Club_Item_list = Cd.GetListData();
 
@@ -66,13 +66,14 @@ public class PageThreeFragment extends Fragment {
             Club_Item = Club_Item_list.get(i);
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("CLUB_GB_CD"));
         }
+        */
         //어뎁터 할당
-/*
+
         //adapter를 통한 값 전달
         for(int i=0; i<img.length;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
         }
-*/
+        listview.setAdapter(adapter);
         txtResult = (TextView)v.findViewById(R.id.txtResult);
         popUpStart(v);
         return v;
