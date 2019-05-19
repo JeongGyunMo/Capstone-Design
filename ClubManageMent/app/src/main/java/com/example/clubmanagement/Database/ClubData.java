@@ -33,48 +33,35 @@ public class ClubData{
       getData("http://192.168.0.9/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
-    public ArrayList<HashMap<String, String>> GetListData() {
+    public ArrayList<HashMap<String, String>> GetListData(String temp) {
         try {
-            JSONObject jsonObj = new JSONObject(myJSON);
+            JSONObject jsonObj = new JSONObject(temp);
             JSON_Club_Item = jsonObj.getJSONArray(TAG_RESULTS);
             for (int i = 0; i < JSON_Club_Item.length(); i++) {
                 JSONObject c = JSON_Club_Item.getJSONObject(i);
                 String id = c.getString(CLUB_ID);
                 String name = c.getString(CLUB_NM);
                 String GB_CD = c.getString(CLUB_GB_CD);
-                String AT_CD = c.getString(CLUB_AT_CD);
-                String CONT = c.getString(INTRO_CONT);
-                String FILE_NM = c.getString(INTRO_FILE_NM);
-
                 HashMap<String, String> Club_Item = new HashMap<String, String>();
-
                 Club_Item.put(CLUB_ID, id);
                 Club_Item.put(CLUB_NM, name);
                 Club_Item.put(CLUB_GB_CD, GB_CD);
-                Club_Item.put(CLUB_AT_CD, AT_CD);
-                Club_Item.put(INTRO_CONT, CONT);
-                Club_Item.put(INTRO_FILE_NM, FILE_NM);
                 Club_Item_list.add(Club_Item);
             }
             return Club_Item_list;
             //ListAdapter adapter = new SimpleAdapter(ClubData.this, Club_Item_list, R.layout.list_item, new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
             //list.setAdapter(adapter);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return Club_Item_list;
     }
-
     public void ClearListData(){
         Club_Item_list.clear();
     }
 
-
     public void getData(String url) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
-
-
             @Override
             protected String doInBackground(String... params) {
                 String uri = params[0];
@@ -82,10 +69,14 @@ public class ClubData{
                     URL url = new URL(uri);//URL 객체 생성
                     //URL을 이용해서 웹페이지에 연결하는 부분
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setDoInput(true);
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setConnectTimeout(10000);
+                    httpURLConnection.setUseCaches(false);
+                    httpURLConnection.setRequestMethod("POST");
+
                     //바이트단위 입력스트림 생성 소스는 httpURLConnection
-                    InputStream inputStream = httpURLConnection.getInputStream();
-                    //웹페이지 출력물을 버퍼로 받음 버퍼로 하면 속도가 더 빨라짐
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                     String temp;
                     //문자열 처리를 더 빠르게 하기 위해 StringBuilder클래스를 사용함
                     StringBuilder stringBuilder = new StringBuilder();
@@ -95,15 +86,14 @@ public class ClubData{
                     }
                     //사용했던 것도 다 닫아줌
                     bufferedReader.close();
-                    inputStream.close();
                     httpURLConnection.disconnect();
                     Temp =  stringBuilder.toString().trim();
-                    return stringBuilder.toString().trim();//trim은 앞뒤의 공백을 제거함
+                    //GetListData(Temp);
+                    return Temp;//trim은 앞뒤의 공백을 제거함
                 } catch (Exception e) {
                     return null;
             }
         }
-
             @Override
             protected void onPostExecute(String result) {myJSON = result; }
         }

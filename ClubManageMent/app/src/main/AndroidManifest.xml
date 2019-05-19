@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.clubmanagement">
 
+    <uses-permission android:name="android.permision.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,7 +26,8 @@
         <activity android:name=".Popup.PopupActivity" android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Form.Application_Form"/>
         <activity android:name=".Club_Home.Club_Home"/>
+
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET  " />
+
 </manifest>

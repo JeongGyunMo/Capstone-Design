@@ -49,12 +49,13 @@ public class PageOneFragment extends Fragment {
         listview.setAdapter(adapter);
         Cd.ClearListData();
         Toast.makeText(getActivity(),"size = " + Club_Item.size(), Toast.LENGTH_LONG).show();
-
         String temp  =Cd.Temp;
+        Cd.GetListData(temp);
+        Club_Item_list = Cd.Club_Item_list;
 
         for(int i = 0; i< Club_Item_list.size(); i++){
             Club_Item = Club_Item_list.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
         }
 
         //adapter를 통한 값 전달
