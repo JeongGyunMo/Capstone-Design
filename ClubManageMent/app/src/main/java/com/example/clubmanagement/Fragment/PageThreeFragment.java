@@ -30,7 +30,7 @@ public class PageThreeFragment extends Fragment {
     private ListViewAdapter adapter;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData CdThree = new ClubData();
+    //ClubData CdThree = new ClubData();
     TextView txtResult;
     Button popUp;
 
