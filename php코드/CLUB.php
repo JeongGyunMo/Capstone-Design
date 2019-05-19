@@ -11,8 +11,9 @@ $res= mysqli_query($con,"select * from CLUB");
 
 $result = array();
 
-array_push($result,array('CLUB_ID'=>$row[0],'CLUB_NM'=>$row[1],'CLUB_GB_CD'=>$row[2]));
-
+while($row = mysqli_fetch_array($res)){
+   array_push($result,array('CLUB_ID'=>$row[0],'CLUB_NM'=>$row[1],'CLUB_GB_CD'=>$row[2],'CLUB_AT_CD'=>$row[3],'INTRO_CONT'=>$row[9],'INTRO_FILE_NM'=>$row[10]));
+}
 echo json_encode(array("result"=>$result),JSON_UNESCAPED_UNICODE);
 
 mysqli_close($con);
