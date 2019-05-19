@@ -26,7 +26,7 @@ public class PageOneFragment extends Fragment {
     private ListViewAdapter adapter;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    //ClubData Cd = new ClubData();
+    ClubData Cd = new ClubData();
     Image_File ht;
     public static PageOneFragment newInstance() {
         Bundle args = new Bundle();
@@ -34,6 +34,7 @@ public class PageOneFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,7 +61,7 @@ public class PageOneFragment extends Fragment {
         img1.setImageBitmap(ht.bitmap);
 */
 
-     /*   Cd.ClearListData();
+        Cd.ClearListData();
         String temp = Cd.Temp;
         Cd.GetListData(temp);
         Club_Item_list = Cd.Club_Item_list;
@@ -71,13 +72,13 @@ public class PageOneFragment extends Fragment {
             ht = new Image_File(url);
             ht.run();
             try {
-                sleep(500);
+                sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             adapter.addVO(new BitmapDrawable(getResources(), ht.bitmap), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
         }
-*/
+
         return v;
     }
 }
