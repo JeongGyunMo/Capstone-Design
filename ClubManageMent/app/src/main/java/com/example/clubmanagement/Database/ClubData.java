@@ -49,8 +49,7 @@ public class ClubData{
                 Club_Item_list.add(Club_Item);
             }
             return Club_Item_list;
-            //ListAdapter adapter = new SimpleAdapter(ClubData.this, Club_Item_list, R.layout.list_item, new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
-            //list.setAdapter(adapter);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -71,7 +70,7 @@ public class ClubData{
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setDoInput(true);
                     httpURLConnection.setDoOutput(true);
-                    httpURLConnection.setConnectTimeout(10000);
+                    httpURLConnection.setConnectTimeout(1000);
                     httpURLConnection.setUseCaches(false);
                     httpURLConnection.setRequestMethod("POST");
 
@@ -90,6 +89,7 @@ public class ClubData{
                     Temp =  stringBuilder.toString().trim();
                     //GetListData(Temp);
                     return Temp;//trim은 앞뒤의 공백을 제거함
+
                 } catch (Exception e) {
                     return null;
             }
