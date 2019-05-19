@@ -26,14 +26,11 @@ import java.util.HashMap;
 import static android.app.Activity.RESULT_OK;
 
 public class PageThreeFragment extends Fragment {
-    private ListView listview ;
+    private ListView listview;
     private ListViewAdapter adapter;
-    private int[] img = {R.drawable.one,R.drawable.two,R.drawable.three};
-    private String[] Title = {"정준일 바램","윤종신 좋니","러블리즈 아츄"};
-    private String[] Context = {"정준일 명곡","윤종신 히트곡","러블리즈 히트곡"};
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-   // ClubData Cd = new ClubData();
+    ClubData Cd = new ClubData();
     TextView txtResult;
     Button popUp;
 
@@ -59,29 +56,25 @@ public class PageThreeFragment extends Fragment {
         adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
 
-/*
-        Cd.ClearListData();
-        Club_Item_list = Cd.GetListData();
-
-        for(int i = 0; i< Club_Item.size(); i++){
-            Club_Item = Club_Item_list.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-        }
-        */
-        //어뎁터 할당
-
         //adapter를 통한 값 전달
-        for(int i=0; i<img.length;i++){
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[i]),Title[i],Context[i]);
-        }
+
+
         listview.setAdapter(adapter);
-        txtResult = (TextView)v.findViewById(R.id.txtResult);
+        Cd.ClearListData();
+        Cd.GetListData(Cd.Temp);
+        Club_Item_list = Cd.Club_Item_list;
+
+        for (int i = 0; i < Club_Item_list.size(); i++) {
+            Club_Item = Club_Item_list.get(i);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
+        }
+
         popUpStart(v);
         return v;
     }
 
     private void popUpStart(View v) {
-        popUp = (Button) v.findViewById(R.id.button) ;
+        popUp = (Button) v.findViewById(R.id.button);
         popUp.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,13 +82,13 @@ public class PageThreeFragment extends Fragment {
                 intent.putExtra("data", "Test Popup");
                 startActivityForResult(intent, 1);
             }
-        }) ;
+        });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==1){
-            if(resultCode==RESULT_OK){
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
                 //데이터 받기
                 String result = data.getStringExtra("result");
                 txtResult.setText(result);

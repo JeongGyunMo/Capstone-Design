@@ -14,6 +14,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static java.lang.Thread.sleep;
+
 public class ClubData{
     String myJSON;
     public String Temp;
@@ -87,7 +89,6 @@ public class ClubData{
                     bufferedReader.close();
                     httpURLConnection.disconnect();
                     Temp =  stringBuilder.toString().trim();
-                    //GetListData(Temp);
                     return Temp;//trim은 앞뒤의 공백을 제거함
 
                 } catch (Exception e) {
