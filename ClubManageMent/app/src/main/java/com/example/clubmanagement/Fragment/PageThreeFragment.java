@@ -30,7 +30,7 @@ public class PageThreeFragment extends Fragment {
     private ListViewAdapter adapter;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData Cd = new ClubData();
+    ClubData CdThree = new ClubData();
     TextView txtResult;
     Button popUp;
 
@@ -57,18 +57,17 @@ public class PageThreeFragment extends Fragment {
         listview = (ListView) v.findViewById(R.id.List_view);
 
         //adapter를 통한 값 전달
-
-
+/*
         listview.setAdapter(adapter);
-        Cd.ClearListData();
-        Cd.GetListData(Cd.Temp);
-        Club_Item_list = Cd.Club_Item_list;
+        CdThree.ClearListData();
+        CdThree.GetListData(CdThree.Temp);
+        Club_Item_list = CdThree.Club_Item_list;
 
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);
             adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
         }
-
+*/
         popUpStart(v);
         return v;
     }

@@ -30,7 +30,7 @@ public class PageTwoFragment extends Fragment {
     private ListViewAdapter adapter;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData Cd = new ClubData();
+    ClubData CdTwo = new ClubData();
     TextView txtResult;
     Button popUp;
 
@@ -61,11 +61,11 @@ public class PageTwoFragment extends Fragment {
         //adapter를 통한 값 전달
 
         listview.setAdapter(adapter);
-        Cd.ClearListData();
+        CdTwo.ClearListData();
 
-        String temp = Cd.Temp;
-        Cd.GetListData(temp);
-        Club_Item_list = Cd.Club_Item_list;
+        String temp = CdTwo.Temp;
+        CdTwo.GetListData(temp);
+        Club_Item_list = CdTwo.Club_Item_list;
 
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);
