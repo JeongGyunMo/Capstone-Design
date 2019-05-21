@@ -3,6 +3,7 @@ package com.example.clubmanagement.Fragment;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
@@ -28,6 +29,7 @@ import static android.app.Activity.RESULT_OK;
 public class PageTwoFragment extends Fragment {
     private ListView listview;
     private ListViewAdapter adapter;
+    int Code;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
     ClubData CdTwo = new ClubData();
@@ -53,7 +55,21 @@ public class PageTwoFragment extends Fragment {
         ArrayAdapter Adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.major, android.R.layout.simple_spinner_item);
         Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         checkSpinner.setAdapter(Adapter);
+        checkSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Code = position;
+                //  ((ArrayAdapter) checkSpinner.getAdapter()).notifyDataSetChanged();
+                // Adapter.notifyDataSetChanged();
+                //((FragmentStart)getActivity()).refresh();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //변수 초기화
         adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
@@ -70,7 +86,33 @@ public class PageTwoFragment extends Fragment {
 
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
+            if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 0) {
+                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 1){
+                if(Club_Item.get("CLUB_AT_CD").equals("2001")){
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 2){
+                if(Club_Item.get("CLUB_AT_CD").equals("2002")){
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 3){
+                if(Club_Item.get("CLUB_AT_CD").equals("2003")){
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 4){
+                if(Club_Item.get("CLUB_AT_CD").equals("2004")){
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 5){
+                if(Club_Item.get("CLUB_AT_CD").equals("2005")){
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 6){
+                if(Club_Item.get("CLUB_AT_CD").equals("2006")){
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            }
         }
         ApplyStart(v);
         return v;

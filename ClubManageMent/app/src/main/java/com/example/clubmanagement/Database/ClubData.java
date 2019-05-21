@@ -23,7 +23,7 @@ public class ClubData{
     private static final String CLUB_ID = "CLUB_ID"; // 동아리 번호
     private static final String CLUB_NM = "CLUB_NM"; // 동아리 이름
     private static final String CLUB_GB_CD = "CLUB_GB_CD"; // 중동/전공
-    private static final String CLUB_AT_CD = "CLUB_GB_CD"; // 학술/운동...
+    private static final String CLUB_AT_CD = "CLUB_AT_CD"; // 학술/운동...
     private static final String INTRO_CONT = "INTRO_CONT"; // 동아리 소개
     private static final String INTRO_FILE_NM = "INTRO_FILE_NM"; // 이미지 주소
 
