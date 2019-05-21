@@ -23,7 +23,8 @@ public class Club_Member_Data{
 
     public Club_Member_Data(){
         JSON_Club_Item = null;
-        Club_Item_list = new ArrayList<HashMap<String, String>>();
+        Club_Item_list = new ArrayList<HashMap<String,
+                String>>();
         getData("http://192.168.0.9/CLUB_bak.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
@@ -44,7 +45,7 @@ public class Club_Member_Data{
 
             }
             return Club_Item_list;
-            //ListAdapter adapter = new SimpleAdapter(ClubData.this, Club_Item_list, R.layout.list_item, new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
+            //ListAdapter adapter = new SimpleAdapter(ClubData.this, Student_Item_list, R.layout.list_item, new String[]{CLUB_ID, CLUB_NM, CLUB_GB_CD},new int[]{R.id.CLUB_ID, R.id.CLUB_NM, R.id.CLUB_GB_CD});
             //list.setAdapter(adapter);
 
         } catch (JSONException e) {

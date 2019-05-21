@@ -1,6 +1,5 @@
 package com.example.clubmanagement.login;
 
-import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -19,17 +18,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
 
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
+            if(SaveSharedPreference.getUserName(LoginActivity.this).length() == 0) {
+
+            }
+            else{
+                startActivity(new Intent(LoginActivity.this, FragmentStart.class));
+            }
             loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                     .get(LoginViewModel.class);
 
@@ -66,10 +69,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
+                    SaveSharedPreference.setUserName(LoginActivity.this, usernameEditText.getText().toString());
+                    startActivity(new Intent(LoginActivity.this, FragmentStart.class));
 
-                startActivity(new Intent(LoginActivity.this, FragmentStart.class));
+                }
             }
         });
 
