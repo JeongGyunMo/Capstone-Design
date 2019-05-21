@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+
 import com.example.clubmanagement.ClubPage.Club_page;
 import com.example.clubmanagement.Form.Application_Form;
 import com.example.clubmanagement.Fragment.FragmentStart;
@@ -16,15 +17,20 @@ import com.example.clubmanagement.R;
 
 public class ApplyActivity extends Activity implements View.OnClickListener{
     Button apply; // 버튼 선언
+    Button cancel;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.apply_activity);
 
         //팝업 버튼 설정
         apply = (Button)findViewById(R.id.apply); // 팝업 버튼 아이디
         apply.setOnClickListener(this);
+
+        cancel = (Button)findViewById(R.id.cancel);
+        cancel.setOnClickListener(this);
     }
 
     public void mJoin(View v){
@@ -49,10 +55,10 @@ public class ApplyActivity extends Activity implements View.OnClickListener{
     }
 
     public void onClick(View view){
-        if(view == apply){
+        if(view == apply) {
             new AlertDialog.Builder(this)
                     .setTitle("가입확인")
-                    .setMessage("가입 되었습니다.")
+                    .setMessage("가입신청 되었습니다.")
                     .setNeutralButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -60,9 +66,22 @@ public class ApplyActivity extends Activity implements View.OnClickListener{
                         }
                     })
                     .show(); // 팝업창 보여줌
-
+        }
+        else if(view == cancel){
+            new AlertDialog.Builder(this)
+                    .setTitle("취소확인")
+                    .setMessage("취소되었습니다.")
+                    .setNeutralButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startActivity(new Intent(getApplicationContext(), FragmentStart.class));
+                        }
+                    })
+                    .show();
         }
     }
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //바깥레이어 클릭시 안닫히게

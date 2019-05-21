@@ -15,16 +15,16 @@ public class Application_Form extends AppCompatActivity{
     Button cancel;
 
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.application_form);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.application_form);
 
-        apply = (Button) findViewById(R.id.join) ;
-        apply.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Application_Form.this, ApplyActivity.class));
-            }
-        });
+            apply = (Button) findViewById(R.id.join) ;
+            apply.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Application_Form.this, ApplyActivity.class));
+                }
+            });
 
         cancel = (Button) findViewById(R.id.cancel);
         cancel.setOnClickListener(new Button.OnClickListener(){

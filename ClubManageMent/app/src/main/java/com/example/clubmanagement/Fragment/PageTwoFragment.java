@@ -15,9 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
+import com.example.clubmanagement.Apply.ApplyActivity;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.Club_Member_Data;
-import com.example.clubmanagement.Popup.PopupActivity;
 import com.example.clubmanagement.R;
 
 import java.util.ArrayList;
@@ -32,7 +32,8 @@ public class PageTwoFragment extends Fragment {
     ArrayList<HashMap<String, String>> Club_Item_list;
     ClubData CdTwo = new ClubData();
     TextView txtResult;
-    Button popUp;
+    Button applyUp;
+
 
     public static PageTwoFragment newInstance() {
         Bundle args = new Bundle();
@@ -71,18 +72,18 @@ public class PageTwoFragment extends Fragment {
             Club_Item = Club_Item_list.get(i);
             adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
         }
-        popUpStart(v);
+        ApplyStart(v);
         return v;
     }
-    private void popUpStart(View v) {
-        popUp = (Button) v.findViewById(R.id.button);
-        popUp.setOnClickListener(new Button.OnClickListener() {
+
+    private void ApplyStart(View v) {
+        applyUp = (Button) v.findViewById(R.id.button);
+        applyUp.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PopupActivity.class);
+                Intent intent = new Intent(getActivity(), ApplyActivity.class);
                 intent.putExtra("data", "Test Popup");
                 startActivityForResult(intent, 1);
-
             }
         });
     }
