@@ -27,6 +27,7 @@ public class TestPagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
+
     @Override
     public int getCount() {
         return PAGE_NUMBER;
@@ -43,4 +44,5 @@ public class TestPagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
+
 }

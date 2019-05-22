@@ -35,7 +35,6 @@ public class PageOneFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,7 +59,6 @@ public class PageOneFragment extends Fragment {
         img1 = (ImageView)v.findViewById(R.id.imim);
         img1.setImageBitmap(ht.bitmap);
 */
-
         Cd.ClearListData();
         String temp = Cd.Temp;
         Cd.GetListData(temp);
@@ -78,7 +76,6 @@ public class PageOneFragment extends Fragment {
             }
             adapter.addVO(new BitmapDrawable(getResources(), ht.bitmap), Club_Item.get("CLUB_ID"), Club_Item.get("CLUB_NM"));
         }
-
         return v;
     }
 }

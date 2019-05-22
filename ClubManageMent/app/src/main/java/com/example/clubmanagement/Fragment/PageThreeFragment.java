@@ -1,8 +1,10 @@
 package com.example.clubmanagement.Fragment;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 //import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
@@ -30,7 +33,7 @@ import static java.lang.Thread.sleep;
 public class PageThreeFragment extends Fragment {
     private ListView listview;
     private ListViewAdapter adapter;
-    int Code;
+    int Code = 0;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
     ClubData CdThree = new ClubData();
@@ -60,16 +63,21 @@ public class PageThreeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Code = position;
+                DataInput(Code);
+                //SwipeRefreshLayout mSwipe;
+                 //adapter.notifyDataSetChanged();
                 //  ((ArrayAdapter) checkSpinner.getAdapter()).notifyDataSetChanged();
                 // Adapter.notifyDataSetChanged();
                // ((FragmentStart)getActivity()).refresh();
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
+        String str = " "+Code;
+        Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
         //변수 초기화
         adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
@@ -82,6 +90,34 @@ public class PageThreeFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        ApplyStart(v);
+        return v;
+    }
+
+    private void ApplyStart(View v) {
+        applyUp = (Button) v.findViewById(R.id.button);
+        applyUp.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ApplyActivity.class);
+                intent.putExtra("data", "Test Popup");
+                startActivityForResult(intent, 1);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                //데이터 받기
+                String result = data.getStringExtra("result");
+                txtResult.setText(result);
+            }
+        }
+    }
+    private void DataInput(int Code){
         CdThree.ClearListData();
         CdThree.GetListData(CdThree.Temp);
         Club_Item_list = CdThree.Club_Item_list;
@@ -116,32 +152,4 @@ public class PageThreeFragment extends Fragment {
                 }
             }
         }
-
-        ApplyStart(v);
-        return v;
-    }
-
-    private void ApplyStart(View v) {
-        applyUp = (Button) v.findViewById(R.id.button);
-        applyUp.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ApplyActivity.class);
-                intent.putExtra("data", "Test Popup");
-                startActivityForResult(intent, 1);
-            }
-        });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                //데이터 받기
-                String result = data.getStringExtra("result");
-                txtResult.setText(result);
-            }
-        }
-    }
-
-}
+    }}
