@@ -97,7 +97,7 @@ public class PageThreeFragment extends Fragment {
             public void onClick(View view) {
                 if(Pos < listview.getCount()){
                     ListVO Vo = (ListVO)(listview.getAdapter().getItem(Pos));
-                    ClubPoster.image = (BitmapDrawable) Vo.getImg();
+                    Cp.image = (BitmapDrawable) Vo.getImg();
                     Intent intent = new Intent(getActivity(), ApplyActivity.class);
                     startActivityForResult(intent, 1);
                 }

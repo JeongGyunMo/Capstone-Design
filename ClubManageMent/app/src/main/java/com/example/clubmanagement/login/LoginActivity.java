@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,19 +22,14 @@ import android.widget.Toast;
 import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
 
+import static java.lang.Thread.sleep;
+
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
-
-            if(SaveSharedPreference.getUserName(LoginActivity.this).length() == 0) {
-
-            }
-            else{
-                startActivity(new Intent(LoginActivity.this, FragmentStart.class));
-            }
 
             loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                     .get(LoginViewModel.class);
@@ -42,6 +38,27 @@ public class LoginActivity extends AppCompatActivity {
             final EditText passwordEditText = findViewById(R.id.password);
             final Button loginButton = findViewById(R.id.login);
             final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+            final CheckBox autoLogin = findViewById(R.id.autoLogin);
+
+            if(SaveSharedPreference.getUserName(LoginActivity.this).length() != 0) {
+                autoLogin.setChecked(true);
+                //SaveSharedPreference.setUserName(LoginActivity.this, usernameEditText.getText().toString());
+                //SaveSharedPreference.setUserPass(LoginActivity.this, passwordEditText.getText().toString());
+                usernameEditText.setText(SaveSharedPreference.getUserName(LoginActivity.this));
+                passwordEditText.setText(SaveSharedPreference.getUserPass(LoginActivity.this));
+
+                loginButton.performLongClick();
+                /*loginViewModel.login(usernameEditText.getText().toString(),
+                        passwordEditText.getText().toString());*/
+/*
+                loadingProgressBar.setVisibility(View.VISIBLE);
+                loginViewModel.login(usernameEditText.getText().toString(),
+                        passwordEditText.getText().toString());
+                */
+                //updateUiWithUser(new LoggedInUserView(SaveSharedPreference.getUserName(LoginActivity.this)));
+               // startActivity(new Intent(LoginActivity.this, FragmentStart.class));
+                //startActivity(new Intent(LoginActivity.this, FragmentStart.class));
+            }
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -71,7 +88,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+
                     SaveSharedPreference.setUserName(LoginActivity.this, usernameEditText.getText().toString());
+                    SaveSharedPreference.setUserPass(LoginActivity.this,passwordEditText.getText().toString());
                     startActivity(new Intent(LoginActivity.this, FragmentStart.class));
 
                 }
@@ -94,8 +113,11 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
+
+
+            usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
+
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
@@ -120,9 +142,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
-        //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        String welcome = model.getDisplayName() + " 님이 로그인 하셨습니다.";
+        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
