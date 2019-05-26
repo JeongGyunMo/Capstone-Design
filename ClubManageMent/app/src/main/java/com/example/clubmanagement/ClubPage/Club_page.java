@@ -1,15 +1,27 @@
 package com.example.clubmanagement.ClubPage;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.clubmanagement.Apply.ApplyActivity;
+import com.example.clubmanagement.Database.ClubData;
+import com.example.clubmanagement.Database.ImageURL.Image_File;
 import com.example.clubmanagement.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static java.lang.Thread.sleep;
+
 public class Club_page extends AppCompatActivity {
+    HashMap<String, String> Club_Item = new HashMap<String, String>();
+    ArrayList<HashMap<String, String>> Club_Item_list;
     Button button1;
     /*  Button button2;
       Button button3;
@@ -20,6 +32,27 @@ public class Club_page extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clubpage);
+
+        ClubData Cd = new ClubData();
+        Cd.ClearListData();
+        Cd.GetListData(Cd.Temp);
+        Club_Item_list = Cd.Club_Item_list;
+        Image_File ht;
+        for (int i = 0; i < Club_Item_list.size(); i++) {
+            Club_Item = Club_Item_list.get(i);
+            if(Club_Item.get("CLUB_ID").equals(ClubPositon.position)) {
+                String url = Club_Item.get("INTRO_FILE_NM");
+                ht = new Image_File(url);
+                ht.run();
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ImageView imageView1 = (ImageView) findViewById(R.id.imageView) ;
+                imageView1.setImageBitmap(ht.bitmap);
+            }
+        }
 
         button1 = (Button) findViewById(R.id.button1);
         button1.setOnClickListener(new Button.OnClickListener() {
