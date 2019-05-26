@@ -52,8 +52,8 @@ public class PageTwoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+                            Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_page_two, container, false);
 
         Spinner checkSpinner = (Spinner) v.findViewById(R.id.spinner_Check);
@@ -65,24 +65,15 @@ public class PageTwoFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Code = position;
+                adapter = new ListViewAdapter();
                 DataInput(Code);
-                //  ((ArrayAdapter) checkSpinner.getAdapter()).notifyDataSetChanged();
-                //                // Adapter.notifyDataSetChanged();
-                //                //((FragmentStart)getActivity()).refresh();
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-        //변수 초기화
-        adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
-
-        //어뎁터 할당
-        //adapter를 통한 값 전달
-
         ApplyStart(v);
         return v;
     }

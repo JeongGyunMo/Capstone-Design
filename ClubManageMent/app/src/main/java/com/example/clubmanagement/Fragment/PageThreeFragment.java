@@ -45,6 +45,7 @@ public class PageThreeFragment extends Fragment {
     TextView txtResult;
     Button applyUp;
     ClubPoster Cp;
+    boolean flag = false;
     int Pos = Integer.MAX_VALUE ;
 
     public static PageThreeFragment newInstance() {
@@ -57,7 +58,6 @@ public class PageThreeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_page_three, container, false);
 
         Spinner checkSpinner = (Spinner) v.findViewById(R.id.spinner_Check);
@@ -69,28 +69,15 @@ public class PageThreeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Code = position;
+                adapter = new ListViewAdapter();
                 DataInput(Code);
-                //SwipeRefreshLayout mSwipe;
-                //adapter.notifyDataSetChanged();
-                //  ((ArrayAdapter) checkSpinner.getAdapter()).notifyDataSetChanged();
-                // Adapter.notifyDataSetChanged();
-                // ((FragmentStart)getActivity()).refresh();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
-        //adapter를 통한 값 전달
-
-        try {
-            sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         ApplyStart(v);
         return v;
     }
@@ -134,10 +121,14 @@ public class PageThreeFragment extends Fragment {
 
     private void DataInput(int Code) {
         listview.setAdapter(adapter);
-        CdThree.ClearListData();
+        if(flag) {
+            adapter.getClass();
+            CdThree.ClearListData();
+            Club_Item_list.clear();
+        }
+        flag = true;
         CdThree.GetListData(CdThree.Temp);
         Club_Item_list = CdThree.Club_Item_list;
-
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);
             String url = Club_Item.get("INTRO_FILE_NM");
