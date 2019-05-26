@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 
+import com.example.clubmanagement.ClubPage.ClubPoster;
 import com.example.clubmanagement.ClubPage.Club_page;
 import com.example.clubmanagement.Form.Application_Form;
 import com.example.clubmanagement.Fragment.FragmentStart;
@@ -18,7 +20,7 @@ import com.example.clubmanagement.R;
 public class ApplyActivity extends Activity implements View.OnClickListener{
     Button apply; // 버튼 선언
     Button cancel;
-
+    LinearLayout linear;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -26,6 +28,9 @@ public class ApplyActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.apply_activity);
 
         //팝업 버튼 설정
+        linear = (LinearLayout)findViewById(R.id.linr);
+        linear.setBackground(ClubPoster.image);
+
         apply = (Button)findViewById(R.id.apply); // 팝업 버튼 아이디
         apply.setOnClickListener(this);
 
@@ -62,22 +67,13 @@ public class ApplyActivity extends Activity implements View.OnClickListener{
                     .setNeutralButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(getApplicationContext(), FragmentStart.class));
+                            finish();
                         }
                     })
                     .show(); // 팝업창 보여줌
         }
         else if(view == cancel){
-            new AlertDialog.Builder(this)
-                    .setTitle("취소확인")
-                    .setMessage("취소되었습니다.")
-                    .setNeutralButton("확인", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(getApplicationContext(), FragmentStart.class));
-                        }
-                    })
-                    .show();
+            finish();
         }
     }
 

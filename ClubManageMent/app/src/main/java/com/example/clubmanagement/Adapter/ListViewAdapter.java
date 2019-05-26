@@ -25,7 +25,6 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<ListVO> listVO = new ArrayList<ListVO>();
 
     public ListViewAdapter() {
-
     }
     @Override
     public int getCount() {
@@ -38,7 +37,6 @@ public class ListViewAdapter extends BaseAdapter {
         //postion = ListView의 위치      /   첫번째면 position = 0
         final int pos = position;
         final Context context = parent.getContext();
-
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

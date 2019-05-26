@@ -1,10 +1,12 @@
 package com.example.clubmanagement.Fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -20,8 +22,11 @@ import android.widget.Toast;
 
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Apply.ApplyActivity;
+import com.example.clubmanagement.ClubPage.ClubPoster;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.Club_Member_Data;
+import com.example.clubmanagement.Database.ImageURL.Image_File;
+import com.example.clubmanagement.ListVO.ListVO;
 import com.example.clubmanagement.R;
 
 import java.util.ArrayList;
@@ -39,6 +44,7 @@ public class PageThreeFragment extends Fragment {
     ClubData CdThree = new ClubData();
     TextView txtResult;
     Button applyUp;
+    ClubPoster Cp;
 
     public static PageThreeFragment newInstance() {
         Bundle args = new Bundle();
@@ -73,8 +79,6 @@ public class PageThreeFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        String str = " " + Code;
-        Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
 
         adapter = new ListViewAdapter();
         listview = (ListView) v.findViewById(R.id.List_view);
@@ -90,13 +94,17 @@ public class PageThreeFragment extends Fragment {
         return v;
     }
 
-    private void ApplyStart(View v) {
+    private void ApplyStart(final View v) {
         applyUp = (Button) v.findViewById(R.id.button);
         applyUp.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getContext(), (listview.getCheckedItemPosition()+1) +"번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+                Log.d("[에러에러에러]", String.valueOf(listview.getSelectedItemPosition()+1));
+                ListVO Vo = (ListVO)(listview.getAdapter().getItem(listview.getSelectedItemPosition()+1));
+                ClubPoster.image = (BitmapDrawable) Vo.getImg();
+
                 Intent intent = new Intent(getActivity(), ApplyActivity.class);
-                intent.putExtra("data", "Test Popup");
                 startActivityForResult(intent, 1);
             }
         });
@@ -121,31 +129,41 @@ public class PageThreeFragment extends Fragment {
 
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);
+            String url = Club_Item.get("INTRO_FILE_NM");
+            Image_File ht = new Image_File(url);
+            ht.run();
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Cp.image = new BitmapDrawable(getResources(),ht.bitmap);
             if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 0) {
-                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
             } else if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 1) {
                 if (Club_Item.get("CLUB_AT_CD").equals("2001")) {
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                    adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             } else if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 2) {
                 if (Club_Item.get("CLUB_AT_CD").equals("2002")) {
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                    adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             } else if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 3) {
                 if (Club_Item.get("CLUB_AT_CD").equals("2003")) {
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                    adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             } else if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 4) {
                 if (Club_Item.get("CLUB_AT_CD").equals("2004")) {
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                    adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             } else if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 5) {
                 if (Club_Item.get("CLUB_AT_CD").equals("2005")) {
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                    adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             } else if (Club_Item.get("CLUB_GB_CD").equals("1002") && Code == 6) {
                 if (Club_Item.get("CLUB_AT_CD").equals("2006")) {
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                    adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             }
         }

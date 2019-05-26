@@ -4,6 +4,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,10 +43,11 @@ public class PageOneFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    /*
     public void SENDID(String STUDENT_ID){
-        ID = STUDENT_ID;
-        Toast.makeText(getActivity(), STUDENT_ID, Toast.LENGTH_SHORT).show();
-    }
+        //ID = STUDENT_ID;
+        //Toast.makeText(getActivity(), STUDENT_ID, Toast.LENGTH_SHORT).show();
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,10 +62,11 @@ public class PageOneFragment extends Fragment {
 
         //변수 초기화
 
-        DataInput();
+        //DataInput();
         //어뎁터 할당
         return v;
     }
+
     private void DataInput(){
         String Ids = ID;
         listview.setAdapter(adapter);
@@ -92,5 +95,14 @@ public class PageOneFragment extends Fragment {
                 }
             }
         }
+
+/*
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(), (position+1) +"번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        */
     }
 }

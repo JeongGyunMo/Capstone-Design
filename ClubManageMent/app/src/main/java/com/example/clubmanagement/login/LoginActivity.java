@@ -27,12 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
+
             if(SaveSharedPreference.getUserName(LoginActivity.this).length() == 0) {
 
             }
             else{
                 startActivity(new Intent(LoginActivity.this, FragmentStart.class));
             }
+
             loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                     .get(LoginViewModel.class);
 

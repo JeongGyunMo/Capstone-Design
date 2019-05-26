@@ -39,8 +39,8 @@ public class LoginDataSource {
                             new LoggedInUser(
                                     java.util.UUID.randomUUID().toString(),
                                     STUDENT_ID);
-                    PageOneFragment POF = new PageOneFragment();
-                    POF.SENDID(STUDENT_ID);
+                    //PageOneFragment POF = new PageOneFragment();
+                    //POF.SENDID(STUDENT_ID);
                     return  new Result.Success<>(RealUser);
                 }
             }

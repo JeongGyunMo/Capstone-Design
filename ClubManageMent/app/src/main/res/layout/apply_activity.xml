@@ -7,6 +7,14 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/linr"
+        android:layout_width="match_parent"
+        android:layout_height="508dp"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+    </LinearLayout>
+    <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_width="match_parent"
