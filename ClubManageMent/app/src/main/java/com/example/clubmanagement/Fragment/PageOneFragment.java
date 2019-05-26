@@ -26,7 +26,6 @@ import java.util.HashMap;
 import static java.lang.Thread.sleep;
 
 public class PageOneFragment extends Fragment {
-    public String ID;
     private ListView listview;
     private ListViewAdapter adapter;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
@@ -62,13 +61,12 @@ public class PageOneFragment extends Fragment {
 
         //변수 초기화
 
-        //DataInput();
+        DataInput();
         //어뎁터 할당
         return v;
     }
 
     private void DataInput(){
-        String Ids = ID;
         listview.setAdapter(adapter);
         CMD.ClearListData();
         CMD.GetListData(CMD.Temp);
@@ -80,7 +78,7 @@ public class PageOneFragment extends Fragment {
 
         for (int i = 0; i < Club_Member_Item_list.size(); i++) {
             Club_Member_Item = Club_Member_Item_list.get(i);
-            if(Club_Member_Item.get("STUDENT_ID").equals(ID)){
+            if(Club_Member_Item.get("STUDENT_ID").equals(Club_UserID.UserID)){
                 Club_Item = Club_Item_list.get(i);
                 if(Club_Member_Item.get("CLUB_ID").equals(Club_Item.get("CLUB_ID"))){
                     String url = Club_Item.get("INTRO_FILE_NM");

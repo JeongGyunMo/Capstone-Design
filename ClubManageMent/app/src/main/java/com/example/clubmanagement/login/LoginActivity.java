@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
             else{
-                startActivity(new Intent(LoginActivity.this, FragmentStart.class));
+               // startActivity(new Intent(LoginActivity.this, FragmentStart.class));
             }
 
             loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
