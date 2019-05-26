@@ -4,6 +4,7 @@ import android.graphics.drawable.BitmapDrawable;
 
 import com.example.clubmanagement.Database.ImageURL.Image_File;
 import com.example.clubmanagement.Database.StudentData;
+import com.example.clubmanagement.Fragment.PageOneFragment;
 import com.example.clubmanagement.data.model.LoggedInUser;
 import com.example.clubmanagement.data.model.LoggedInUser;
 import com.example.clubmanagement.login.LoginActivity;
@@ -38,7 +39,8 @@ public class LoginDataSource {
                             new LoggedInUser(
                                     java.util.UUID.randomUUID().toString(),
                                     STUDENT_ID);
-
+                    PageOneFragment POF = new PageOneFragment();
+                    POF.SENDID(STUDENT_ID);
                     return  new Result.Success<>(RealUser);
                 }
             }
@@ -50,8 +52,8 @@ public class LoginDataSource {
 
     public void logout() {
         // TODO: revoke authentication
-
-
-
+    }
+    public String Seed(String ID){
+        return ID;
     }
 }

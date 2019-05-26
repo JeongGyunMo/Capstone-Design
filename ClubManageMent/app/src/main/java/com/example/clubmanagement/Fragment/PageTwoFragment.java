@@ -60,6 +60,7 @@ public class PageTwoFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Code = position;
+                DataInput(Code);
                 //  ((ArrayAdapter) checkSpinner.getAdapter()).notifyDataSetChanged();
                 // Adapter.notifyDataSetChanged();
                 //((FragmentStart)getActivity()).refresh();
@@ -77,43 +78,9 @@ public class PageTwoFragment extends Fragment {
         //어뎁터 할당
         //adapter를 통한 값 전달
 
-        listview.setAdapter(adapter);
-       CdTwo.ClearListData();
 
-        String temp = CdTwo.Temp;
-        CdTwo.GetListData(temp);
-        Club_Item_list = CdTwo.Club_Item_list;
 
-        for (int i = 0; i < Club_Item_list.size(); i++) {
-            Club_Item = Club_Item_list.get(i);
-            if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 0) {
-                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 1){
-                if(Club_Item.get("CLUB_AT_CD").equals("2001")){
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-                }
-            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 2){
-                if(Club_Item.get("CLUB_AT_CD").equals("2002")){
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-                }
-            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 3){
-                if(Club_Item.get("CLUB_AT_CD").equals("2003")){
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-                }
-            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 4){
-                if(Club_Item.get("CLUB_AT_CD").equals("2004")){
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-                }
-            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 5){
-                if(Club_Item.get("CLUB_AT_CD").equals("2005")){
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-                }
-            }else if(Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 6){
-                if(Club_Item.get("CLUB_AT_CD").equals("2006")){
-                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
-                }
-            }
-        }
+
         ApplyStart(v);
         return v;
     }
@@ -136,6 +103,44 @@ public class PageTwoFragment extends Fragment {
                 //데이터 받기
                 String result = data.getStringExtra("result");
                 txtResult.setText(result);
+            }
+        }
+    }
+
+    private void DataInput(int Code) {
+        listview.setAdapter(adapter);
+        CdTwo.ClearListData();
+        CdTwo.GetListData(CdTwo.Temp);
+        Club_Item_list = CdTwo.Club_Item_list;
+
+        for (int i = 0; i < Club_Item_list.size(); i++) {
+            Club_Item = Club_Item_list.get(i);
+            if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 0) {
+                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+            } else if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 1) {
+                if (Club_Item.get("CLUB_AT_CD").equals("2001")) {
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            } else if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 2) {
+                if (Club_Item.get("CLUB_AT_CD").equals("2002")) {
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            } else if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 3) {
+                if (Club_Item.get("CLUB_AT_CD").equals("2003")) {
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            } else if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 4) {
+                if (Club_Item.get("CLUB_AT_CD").equals("2004")) {
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            } else if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 5) {
+                if (Club_Item.get("CLUB_AT_CD").equals("2005")) {
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
+            } else if (Club_Item.get("CLUB_GB_CD").equals("1001") && Code == 6) {
+                if (Club_Item.get("CLUB_AT_CD").equals("2006")) {
+                    adapter.addVO(ContextCompat.getDrawable(this.getActivity(), R.drawable.one), Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
+                }
             }
         }
     }

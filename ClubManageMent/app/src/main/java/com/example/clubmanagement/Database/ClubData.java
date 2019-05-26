@@ -33,7 +33,7 @@ public class ClubData{
     public ClubData(){
         JSON_Club_Item = null;
         Club_Item_list = new ArrayList<HashMap<String, String>>();
-      getData("http://192.168.0.3/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
+      getData("http://192.168.0.9/CLUB.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
     public ArrayList<HashMap<String, String>> GetListData(String temp) {
@@ -45,23 +45,18 @@ public class ClubData{
                 String id = c.getString(CLUB_ID);
                 String name = c.getString(CLUB_NM);
                 String GB_CD = c.getString(CLUB_GB_CD);
-
                 String AT_CD = c.getString(CLUB_AT_CD);
                 String CONT = c.getString(INTRO_CONT);
                 String FILE_NM = c.getString(INTRO_FILE_NM);
-
                 HashMap<String, String> Club_Item = new HashMap<String, String>();
                 Club_Item.put(CLUB_ID, id);
                 Club_Item.put(CLUB_NM, name);
                 Club_Item.put(CLUB_GB_CD, GB_CD);
-
                 Club_Item.put(CLUB_AT_CD, AT_CD);
                 Club_Item.put(INTRO_CONT, CONT);
                 Club_Item.put(INTRO_FILE_NM, FILE_NM);
                 Club_Item_list.add(Club_Item);
-
             }
-
             return Club_Item_list;
 
         } catch (JSONException e) {
@@ -72,7 +67,6 @@ public class ClubData{
     public void ClearListData(){
         Club_Item_list.clear();
     }
-
     public void getData(String url) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
             @Override
