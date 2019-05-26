@@ -20,7 +20,6 @@
             android:id="@+id/title"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:text="정주일 바램"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             />

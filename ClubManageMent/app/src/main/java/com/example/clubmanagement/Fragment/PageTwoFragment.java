@@ -40,6 +40,7 @@ public class PageTwoFragment extends Fragment {
     TextView txtResult;
     Button applyUp;
     ClubPoster Cp;
+    int Pos = Integer.MAX_VALUE ;
 
     public static PageTwoFragment newInstance() {
         Bundle args = new Bundle();
@@ -86,16 +87,28 @@ public class PageTwoFragment extends Fragment {
         return v;
     }
 
-    private void ApplyStart(View v) {
+    private void ApplyStart(final View v) {
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pos = position;
+            }
+        });
+
         applyUp = (Button) v.findViewById(R.id.button);
         applyUp.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListVO Vo = (ListVO)(listview.getAdapter().getItem(listview.getSelectedItemPosition()+1));
-                ClubPoster.image = (BitmapDrawable) Vo.getImg();
-
-                Intent intent = new Intent(getActivity(), ApplyActivity.class);
-                startActivityForResult(intent, 1);
+                if(Pos < listview.getCount()){
+                    ListVO Vo = (ListVO)(listview.getAdapter().getItem(Pos));
+                    ClubPoster.image = (BitmapDrawable) Vo.getImg();
+                    Intent intent = new Intent(getActivity(), ApplyActivity.class);
+                    startActivityForResult(intent, 1);
+                }
+                else{
+                    Toast.makeText(getContext(),"동아리를 선택하세요.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

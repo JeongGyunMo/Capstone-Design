@@ -24,7 +24,7 @@
                     android:id="@+id/List_view"
                     android:layout_width="match_parent"
                     android:layout_height="618dp"
-                    android:listSelector="@color/colorAccent"/>
+                    android:listSelector="#E0F7D2"/>
                     />
 
             </LinearLayout>
