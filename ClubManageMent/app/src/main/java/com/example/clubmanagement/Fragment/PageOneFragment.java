@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.ClubPage.ClubPositon;
 import com.example.clubmanagement.ClubPage.Club_page;
+import com.example.clubmanagement.DATAPOOL.Club;
+import com.example.clubmanagement.DATAPOOL.Club_Member;
 import com.example.clubmanagement.DATAPOOL.Club_UserID;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.Club_Member_Data;
@@ -35,8 +37,8 @@ public class PageOneFragment extends Fragment {
     String[] NameArr;
     int count;
 
-    ClubData Cd = new ClubData();
-    Club_Member_Data CMD = new Club_Member_Data();
+   // ClubData Cd = new ClubData();
+    //Club_Member_Data CMD = new Club_Member_Data();
     Image_File ht;
     public static PageOneFragment newInstance() {
         Bundle args = new Bundle();
@@ -62,18 +64,13 @@ public class PageOneFragment extends Fragment {
 
     private void DataInput(){
         listview.setAdapter(adapter);
-        CMD.ClearListData();
-        CMD.GetListData(CMD.Temp);
-        Club_Member_Item_list = CMD.Club_Member_Item_list;
 
-        Cd.ClearListData();
-        Cd.GetListData(Cd.Temp);
-        Club_Item_list = Cd.Club_Item_list;
+        Club_Item_list = Club.Club_Item_list;
         NameArr = new String[Club_Item_list.size()];
         count = 0;
 
         for (int i = 0; i < Club_Member_Item_list.size(); i++) {
-            Club_Member_Item = Club_Member_Item_list.get(i);
+            Club_Member_Item = Club_Member.Club_Member_Item_list.get(i);
             if(Club_Member_Item.get("STUDENT_ID").equals(Club_UserID.UserID)){
                 Club_Item = Club_Item_list.get(i);
                 if(Club_Member_Item.get("CLUB_ID").equals(Club_Item.get("CLUB_ID"))){

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Apply.ApplyActivity;
 import com.example.clubmanagement.ClubPage.ClubPoster;
+import com.example.clubmanagement.DATAPOOL.Club;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.Club_Member_Data;
 import com.example.clubmanagement.Database.ImageURL.Image_File;
@@ -41,7 +42,6 @@ public class PageThreeFragment extends Fragment {
     int Code = 0;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData CdThree = new ClubData();
     TextView txtResult;
     Button applyUp;
     ClubPoster Cp;
@@ -123,12 +123,10 @@ public class PageThreeFragment extends Fragment {
         listview.setAdapter(adapter);
         if(flag) {
             adapter.getClass();
-            CdThree.ClearListData();
             Club_Item_list.clear();
         }
         flag = true;
-        CdThree.GetListData(CdThree.Temp);
-        Club_Item_list = CdThree.Club_Item_list;
+        Club_Item_list = Club.Club_Item_list;
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);
             String url = Club_Item.get("INTRO_FILE_NM");

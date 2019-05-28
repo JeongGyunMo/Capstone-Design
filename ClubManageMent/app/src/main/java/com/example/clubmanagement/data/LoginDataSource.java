@@ -1,5 +1,6 @@
 package com.example.clubmanagement.data;
 
+import com.example.clubmanagement.DATAPOOL.Student;
 import com.example.clubmanagement.Database.StudentData;
 import com.example.clubmanagement.DATAPOOL.Club_UserID;
 import com.example.clubmanagement.data.model.LoggedInUser;
@@ -21,8 +22,7 @@ public class LoginDataSource {
 
         try {
             // TODO: handle loggedInUser authentication
-            Std.GetListData();
-            Student_Item_list = Std.Student_Item_list;
+            Student_Item_list = Student.Student_Item_list;
 
             for (int i = 0; i < Student_Item_list.size(); i++) {
                 Club_Item = Student_Item_list.get(i);

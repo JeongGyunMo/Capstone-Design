@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.Apply.ApplyActivity;
 import com.example.clubmanagement.ClubPage.ClubPoster;
+import com.example.clubmanagement.DATAPOOL.Club;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.ImageURL.Image_File;
 import com.example.clubmanagement.ListVO.ListVO;
@@ -36,7 +37,7 @@ public class PageTwoFragment extends Fragment {
     int Code;
     HashMap<String, String> Club_Item = new HashMap<String, String>();
     ArrayList<HashMap<String, String>> Club_Item_list;
-    ClubData CdTwo = new ClubData();
+    //ClubData CdTwo = new ClubData();
     TextView txtResult;
     Button applyUp;
     ClubPoster Cp;
@@ -119,9 +120,7 @@ public class PageTwoFragment extends Fragment {
 
     private void DataInput(int Code) {
         listview.setAdapter(adapter);
-        CdTwo.ClearListData();
-        CdTwo.GetListData(CdTwo.Temp);
-        Club_Item_list = CdTwo.Club_Item_list;
+        Club_Item_list = Club.Club_Item_list;
 
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);

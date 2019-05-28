@@ -20,6 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clubmanagement.DATAPOOL.Club;
+import com.example.clubmanagement.DATAPOOL.Club_Member;
+import com.example.clubmanagement.Database.StudentData;
 import com.example.clubmanagement.Fragment.FragmentStart;
 import com.example.clubmanagement.R;
 import com.example.clubmanagement.login.LoginActivity;
@@ -38,7 +41,9 @@ public class Loading_Activity extends Activity {
         catch (InterruptedException e){
             e.printStackTrace();
         }
-
+        StudentData SD = new StudentData();
+        Club Cd = new Club();
+        Club_Member CM = new Club_Member();
         startActivity(new Intent(this, LoginActivity.class));
     }
 }

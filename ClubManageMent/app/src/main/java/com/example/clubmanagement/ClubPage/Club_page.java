@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.clubmanagement.Apply.ApplyActivity;
+import com.example.clubmanagement.DATAPOOL.Club;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.ImageURL.Image_File;
 import com.example.clubmanagement.R;
@@ -33,10 +34,7 @@ public class Club_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clubpage);
 
-        ClubData Cd = new ClubData();
-        Cd.ClearListData();
-        Cd.GetListData(Cd.Temp);
-        Club_Item_list = Cd.Club_Item_list;
+        Club_Item_list = Club.Club_Item_list;
         Image_File ht;
         for (int i = 0; i < Club_Item_list.size(); i++) {
             Club_Item = Club_Item_list.get(i);

@@ -75,7 +75,7 @@ public class ApplyActivity extends Activity implements View.OnClickListener{
                         })
                         .show(); // 팝업창 보여줌
             }
-            catch (){
+            catch (Exception e){
 
             }
         }
