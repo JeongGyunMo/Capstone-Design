@@ -61,16 +61,23 @@ public class ApplyActivity extends Activity implements View.OnClickListener{
 
     public void onClick(View view){
         if(view == apply) {
-            new AlertDialog.Builder(this)
-                    .setTitle("가입확인")
-                    .setMessage("가입신청 되었습니다.")
-                    .setNeutralButton("확인", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    })
-                    .show(); // 팝업창 보여줌
+            try {
+                String Selected_Club_id = getIntent().getStringExtra("CLUB_ID");
+
+                new AlertDialog.Builder(this)
+                        .setTitle("가입확인")
+                        .setMessage("가입신청 되었습니다.")
+                        .setNeutralButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                        .show(); // 팝업창 보여줌
+            }
+            catch (){
+
+            }
         }
         else if(view == cancel){
             finish();

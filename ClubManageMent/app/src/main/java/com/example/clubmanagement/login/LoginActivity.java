@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 usernameEditText.setText(SaveSharedPreference.getUserName(LoginActivity.this));
                 passwordEditText.setText(SaveSharedPreference.getUserPass(LoginActivity.this));
 
-                loginButton.performLongClick();
+                //loginButton.performLongClick();
                 /*loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());*/
 /*
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
                 */
                 //updateUiWithUser(new LoggedInUserView(SaveSharedPreference.getUserName(LoginActivity.this)));
-               // startActivity(new Intent(LoginActivity.this, FragmentStart.class));
+                //startActivity(new Intent(LoginActivity.this, FragmentStart.class));
                 //startActivity(new Intent(LoginActivity.this, FragmentStart.class));
             }
 

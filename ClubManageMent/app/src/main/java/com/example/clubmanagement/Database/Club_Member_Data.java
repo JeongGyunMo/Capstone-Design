@@ -19,13 +19,14 @@ public class Club_Member_Data{
     private static final String CLUB_ID = "CLUB_ID"; // 동아리 번호
     private static final String STUDENT_ID = "STUDENT_ID"; // 학번
     private static final String NM = "NM"; // 이름
+    private static final String JOIN_CD = "JOIN_CD"; // 이름
     public JSONArray JSON_Club_Item = null;
     public ArrayList<HashMap<String, String>> Club_Member_Item_list;
 
     public Club_Member_Data(){
         JSON_Club_Item = null;
         Club_Member_Item_list = new ArrayList<HashMap<String,String>>();
-        getData("http://192.168.0.9/CLUB_MEMBER.php"); //http://[현재자신의아이피]/PHP_connection.php
+        getData("http://192.168.0.3/CLUB_MEMBER.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
     public ArrayList<HashMap<String, String>> GetListData(String temp) {
@@ -37,10 +38,12 @@ public class Club_Member_Data{
                 String id = c.getString(CLUB_ID);
                 String S_id = c.getString(STUDENT_ID);
                 String name = c.getString(NM);
+                String Join_Cd = c.getString(JOIN_CD);
                 HashMap<String, String> Club_Item = new HashMap<String, String>();
                 Club_Item.put(CLUB_ID, id);
                 Club_Item.put(STUDENT_ID, S_id);
                 Club_Item.put(NM, name);
+                Club_Item.put(JOIN_CD, Join_Cd);
                 Club_Member_Item_list.add(Club_Item);
             }
             return Club_Member_Item_list;

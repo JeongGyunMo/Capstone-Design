@@ -2,9 +2,7 @@ package com.example.clubmanagement.Fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
@@ -16,13 +14,12 @@ import android.widget.Toast;
 import com.example.clubmanagement.Adapter.ListViewAdapter;
 import com.example.clubmanagement.ClubPage.ClubPositon;
 import com.example.clubmanagement.ClubPage.Club_page;
+import com.example.clubmanagement.DATAPOOL.Club_UserID;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.Club_Member_Data;
 import com.example.clubmanagement.Database.ImageURL.Image_File;
 import com.example.clubmanagement.R;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -93,6 +90,7 @@ public class PageOneFragment extends Fragment {
                 }
             }
         }
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -12,7 +12,7 @@ $res= mysqli_query($con,"select * from CLUB_MEMBER");
 $result = array();
 
 while($row = mysqli_fetch_array($res)){
-   array_push($result,array('CLUB_ID'=>$row[0],'STUDENT_ID'=>$row[1],'NM'=>$row[2]));
+   array_push($result,array('CLUB_ID'=>$row[0],'STUDENT_ID'=>$row[1],'NM'=>$row[2],'JOIN_CD'=>$row[15]));
 }
 echo json_encode(array("result"=>$result),JSON_UNESCAPED_UNICODE);
 

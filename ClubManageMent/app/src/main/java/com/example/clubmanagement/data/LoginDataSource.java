@@ -1,15 +1,8 @@
 package com.example.clubmanagement.data;
 
-import android.graphics.drawable.BitmapDrawable;
-
-import com.example.clubmanagement.Database.ImageURL.Image_File;
 import com.example.clubmanagement.Database.StudentData;
-import com.example.clubmanagement.Fragment.Club_UserID;
-import com.example.clubmanagement.Fragment.PageOneFragment;
+import com.example.clubmanagement.DATAPOOL.Club_UserID;
 import com.example.clubmanagement.data.model.LoggedInUser;
-import com.example.clubmanagement.data.model.LoggedInUser;
-import com.example.clubmanagement.login.LoginActivity;
-import com.example.clubmanagement.login.SaveSharedPreference;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -26,7 +26,7 @@ public class StudentData {
     public StudentData(){
         JSON_Student_Item = null;
         Student_Item_list = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.0.9/Student.php"); //http://[현재자신의아이피]/PHP_connection.php
+        getData("http://192.168.0.3/Student.php"); //http://[현재자신의아이피]/PHP_connection.php
     }
 
     public ArrayList<HashMap<String, String>> GetListData() {

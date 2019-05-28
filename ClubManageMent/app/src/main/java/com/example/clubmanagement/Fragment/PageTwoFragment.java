@@ -95,6 +95,8 @@ public class PageTwoFragment extends Fragment {
                     ListVO Vo = (ListVO)(listview.getAdapter().getItem(Pos));
                     Cp.image = (BitmapDrawable) Vo.getImg();
                     Intent intent = new Intent(getActivity(), ApplyActivity.class);
+
+                    intent.putExtra("CLUB_ID",Club_Item.get("CLUB_ID"));
                     startActivityForResult(intent, 1);
                 }
                 else{
