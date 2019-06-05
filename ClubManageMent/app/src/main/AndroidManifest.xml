@@ -27,6 +27,7 @@
         <activity android:name=".ClubPage.Club_page"/>
         <activity android:name=".ClubPage.Club_page_member"/>
         <activity android:name=".Restaurant.Restaurant_Activity"/>
+        <activity android:name=".Item.Item_Activity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

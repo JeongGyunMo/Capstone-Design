@@ -27,8 +27,9 @@ public class Club_page extends AppCompatActivity {
     //ArrayList<HashMap<String, String>> Club_Item_list;
     Button button1;
     Button button4;
-    /*  Button button2;
+    //  Button button2;
       Button button3;
+      /*
       Button button5;
       Button button6;
   */
@@ -73,7 +74,7 @@ public class Club_page extends AppCompatActivity {
                 startActivity(new Intent(Club_page.this, ApplyActivity.class));
             }
         });
-
+*/
         button3 = (Button) findViewById(R.id.button3);
         button3.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -81,7 +82,7 @@ public class Club_page extends AppCompatActivity {
                 startActivity(new Intent(Club_page.this, ApplyActivity.class));
             }
         });
-*/
+
         button4 = (Button) findViewById(R.id.button4);
         button4.setOnClickListener(new Button.OnClickListener() {
             @Override
