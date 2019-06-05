@@ -19,7 +19,7 @@ public class Item_Activity  extends AppCompatActivity {
 
         adapter_Item = new ItemListAdapter();
         listview = (ListView) findViewById(R.id.item_listview);
-        
+
         listview.setAdapter(adapter_Item);
 
         adapter_Item.addVO("컴퓨터",  "1개");

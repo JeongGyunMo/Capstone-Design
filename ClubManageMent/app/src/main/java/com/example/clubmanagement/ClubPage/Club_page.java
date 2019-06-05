@@ -13,6 +13,7 @@ import com.example.clubmanagement.Apply.ApplyActivity;
 import com.example.clubmanagement.DATAPOOL.Club;
 import com.example.clubmanagement.Database.ClubData;
 import com.example.clubmanagement.Database.ImageURL.Image_File;
+import com.example.clubmanagement.Item.Item_Activity;
 import com.example.clubmanagement.R;
 import com.example.clubmanagement.Restaurant.Restaurant_Activity;
 
@@ -79,7 +80,7 @@ public class Club_page extends AppCompatActivity {
         button3.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Club_page.this, ApplyActivity.class));
+                startActivity(new Intent(Club_page.this, Item_Activity.class));
             }
         });
 
