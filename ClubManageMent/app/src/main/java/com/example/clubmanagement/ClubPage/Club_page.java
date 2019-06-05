@@ -61,7 +61,7 @@ public class Club_page extends AppCompatActivity {
         button1.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Club_page.this, ApplyActivity.class));
+                startActivity(new Intent(Club_page.this, Club_page_member.class));
             }
         });
 

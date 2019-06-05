@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.example.clubmanagement.Adapter.ListMemberAdapter;
@@ -19,38 +21,29 @@ import java.util.HashMap;
 
 import static java.lang.Thread.sleep;
 
-public class Club_page_member extends Activity {
-    private ListView listview;
+public class Club_page_member extends AppCompatActivity {
+    private ListView listview ;
     private ListMemberAdapter adapter;
-    HashMap<String, String> Club_Member_Item = new HashMap<String, String>();
-    ArrayList<HashMap<String, String>> Club_Member_Item_list;
-    Club_Member_Data CMD = new Club_Member_Data();
-    Image_File ht;
+    private String[] staff= {"회장","부회장","총무","회원","회원","회원","회원","회원","회원","회원","회원"};
+    private String[] name= {"정균모","이호명","이지아", "김중형", "김중형", "김중형", "김중형", "김중형", "김중형", "김중형", "김중형"};
+    private String[] major= {"빅데이터","콘텐츠IT","빅데이터","콘텐츠IT","빅데이터","콘텐츠IT","빅데이터","콘텐츠IT","빅데이터","콘텐츠IT","빅데이터"};
+    private String[] phoneNM= {"010-5253-4567","010-5352-1523","010-3525-5232","010-9424-5525","010-9424-5525","010-9424-5525","010-9424-5525","010-9424-5525","010-9424-5525","010-9424-5525","010-9424-5525"};
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.club_page_clubmember);
+        setContentView(R.layout.club_member_page);
 
-        ListView v = (ListView)findViewById(R.id.Club_Member);
-
+        //변수 초기화
         adapter = new ListMemberAdapter();
-        listview = (ListView) v.findViewById(R.id.Club_Member);
+        listview = (ListView) findViewById(R.id.member_list_view);
 
-
-        DataInput();
-    }
-
-    private void DataInput(){
+        //어뎁터 할당
         listview.setAdapter(adapter);
-        CMD.ClearListData();
-        CMD.GetListData(CMD.Temp);
-        Club_Member_Item_list = CMD.Club_Member_Item_list;
-        for (int i = 0; i < Club_Member_Item_list.size(); i++) {
-            Club_Member_Item = Club_Member_Item_list.get(i);
-            if(Club_Member_Item.get("CLUB_ID").equals(ClubPositon.position)){
-                adapter.addVO(Club_Member_Item.get("STUDENT_ID"), Club_Member_Item.get("NM"));
-            }
+
+        //adapter를 통한 값 전달
+        for(int i=0; i<staff.length;i++){
+            adapter.addVO(staff[i],name[i],major[i],phoneNM[i]);
         }
     }
 }

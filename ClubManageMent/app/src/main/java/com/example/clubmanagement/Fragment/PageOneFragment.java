@@ -31,9 +31,9 @@ import static java.lang.Thread.sleep;
 public class PageOneFragment extends Fragment {
     private ListView listview;
     private ListViewAdapter adapter;
-    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname};
-    private String[] ClubName = {"Hallym","팬타곤","일레븐","노네임"};
-    private String[] Context = {"한림대학교를 자랑하기 위해서 만들었습니다.","공대의 농구 실력을 위해서 만들었습니다.","공학 공부를 위해서 만들었습니다.","공대의 축구 실력을 위해서 만들었습니다."};
+    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname,R.drawable.video,R.drawable.cloud,R.drawable.general,R.drawable.wings,R.drawable.heart,R.drawable.shop,R.drawable.triangle,R.drawable.waterdrop};
+    private String[] ClubName = {"Hallym","팬타곤","일레븐","노네임","영상틀","한빛","힙합PD","CCC","씨애랑","VIP","불꽃슛","음감실"};
+    private String[] Context = {"한림대학교를 자랑하기 위해서 만들었습니다.","공대의 농구 실력을 위해서 만들었습니다.","공학 공부를 위해서 만들었습니다.","공대의 축구 실력을 위해서 만들었습니다.","영상 제작 동아리", "사진 동아리","힙합 노래 동아리","교회 동아리","공대 학술 동아리","전자공 학술 동아리","축구 동아리","음악 감상 동아리"};
     int count;
 
    // ClubData Cd = new ClubData();
@@ -63,6 +63,8 @@ public class PageOneFragment extends Fragment {
         count = 0;
        // for(int i = 0; i<4;i++){
             adapter.addVO(ContextCompat.getDrawable(this.getActivity() ,img[0]),ClubName[0],Context[0]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[10]), ClubName[10], Context[10]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[4]), ClubName[4], Context[4]);
         //}
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
