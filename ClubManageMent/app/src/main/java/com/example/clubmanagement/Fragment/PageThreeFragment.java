@@ -40,9 +40,9 @@ public class PageThreeFragment extends Fragment {
     private ListView listview;
     private ListViewAdapter adapter;
     int Code = 0;
-    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname};
-    private String[] ClubName = {"Hallym","팬타곤","일레븐","노네임"};
-    private String[] Context = {"한림대학교를 자랑하기 위해서 만들었습니다.","공대의 농구 실력을 위해서 만들었습니다.","공학 공부를 위해서 만들었습니다.","공대의 축구 실력을 위해서 만들었습니다."};
+    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname,R.drawable.video,R.drawable.cloud,R.drawable.general,R.drawable.wings,R.drawable.heart,R.drawable.shop,R.drawable.triangle,R.drawable.waterdrop};
+    private String[] ClubName = {"Hallym","팬타곤","일레븐","노네임","영상틀","한빛","힙합PD","CCC","씨애랑","VIP","불꽃슛","음감실"};
+    private String[] Context = {"한림대학교를 자랑하기 위해서 만들었습니다.","공대의 농구 실력을 위해서 만들었습니다.","공학 공부를 위해서 만들었습니다.","공대의 축구 실력을 위해서 만들었습니다.","영상 제작 동아리", "사진 동아리","힙합 노래 동아리","교회 동아리","공대 학술 동아리","전자공 학술 동아리","축구 동아리","음악 감상 동아리"};
     //HashMap<String, String> Club_Item = new HashMap<String, String>();
     //ArrayList<HashMap<String, String>> Club_Item_list;
     TextView txtResult;
@@ -128,14 +128,24 @@ public class PageThreeFragment extends Fragment {
         }
         flag = true;
         if(Code == 0) {
-            for (int i = 1; i < 4; i++) {
-                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[i]), ClubName[i], Context[i]);
-            }
-        }else if(Code == 1){
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[3]), ClubName[3], Context[3]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[10]), ClubName[10], Context[10]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[4]), ClubName[4], Context[4]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[5]), ClubName[5], Context[5]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[6]), ClubName[6], Context[6]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[11]), ClubName[11], Context[11]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[7]), ClubName[7], Context[7]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[0]), ClubName[0], Context[0]);
         }else if(Code == 2){
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[1]), ClubName[1], Context[1]);
-            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[2]), ClubName[2], Context[2]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[10]), ClubName[10], Context[10]);
+        }else if(Code == 4) {
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[4]), ClubName[4], Context[4]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[5]), ClubName[5], Context[5]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[6]), ClubName[6], Context[6]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[11]), ClubName[11], Context[11]);
+        }else if(Code == 5){
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[7]), ClubName[7], Context[7]);
+        }else if(Code == 6){
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[0]), ClubName[0], Context[0]);
         }
     }
 

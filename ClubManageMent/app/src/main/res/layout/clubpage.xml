@@ -42,10 +42,11 @@
 
             <Button
                 android:id="@+id/button1"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/list"
+                 />
 
             <Button
                 android:id="@+id/button2"
@@ -70,10 +71,11 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/food"
+                />
         </LinearLayout>
 
         <LinearLayout
