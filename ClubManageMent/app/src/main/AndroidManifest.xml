@@ -26,6 +26,7 @@
         <activity android:name=".Club_Home.Club_Home"/>
         <activity android:name=".ClubPage.Club_page"/>
         <activity android:name=".ClubPage.Club_page_member"/>
+        <activity android:name=".ClubPage.Club_Apply_member"/>
         <activity android:name=".Restaurant.Restaurant_Activity"/>
         <activity android:name=".Item.Item_Activity"/>
     </application>

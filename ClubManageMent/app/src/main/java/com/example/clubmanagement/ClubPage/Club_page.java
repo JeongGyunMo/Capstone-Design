@@ -28,7 +28,7 @@ public class Club_page extends AppCompatActivity {
     //ArrayList<HashMap<String, String>> Club_Item_list;
     Button button1;
     Button button4;
-    //  Button button2;
+      Button button2;
       Button button3;
       /*
       Button button5;
@@ -68,14 +68,14 @@ public class Club_page extends AppCompatActivity {
             }
         });
 
-      /*  button2 = (Button) findViewById(R.id.button2);
+        button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Club_page.this, ApplyActivity.class));
+                startActivity(new Intent(Club_page.this, Club_Apply_member.class));
             }
         });
-*/
+
         button3 = (Button) findViewById(R.id.button3);
         button3.setOnClickListener(new Button.OnClickListener() {
             @Override
