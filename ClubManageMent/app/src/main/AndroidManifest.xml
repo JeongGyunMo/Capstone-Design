@@ -25,6 +25,10 @@
         <activity android:name=".Form.Application_Form"/>
         <activity android:name=".Club_Home.Club_Home"/>
         <activity android:name=".ClubPage.Club_page"/>
+        <activity android:name=".ClubPage.Club_page_member"/>
+        <activity android:name=".Restaurant.Restaurant_Activity"/>
+
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
