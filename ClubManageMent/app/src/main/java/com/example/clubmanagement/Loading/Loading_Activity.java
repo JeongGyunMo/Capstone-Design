@@ -41,9 +41,6 @@ public class Loading_Activity extends Activity {
         catch (InterruptedException e){
             e.printStackTrace();
         }
-        StudentData SD = new StudentData();
-        Club Cd = new Club();
-        Club_Member CM = new Club_Member();
         startActivity(new Intent(this, LoginActivity.class));
     }
 }

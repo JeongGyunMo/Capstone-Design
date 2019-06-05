@@ -15,25 +15,18 @@ import static java.lang.Thread.sleep;
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 public class LoginDataSource {
-    ArrayList<HashMap<String, String>> Student_Item_list;
-    HashMap<String, String> Club_Item = new HashMap<String, String>();
-    StudentData Std = new StudentData();
     public Result<LoggedInUser> login(String username, String password) {
-
+        String StudentID[] = {"20145165","20145144","20163154","20145489","20151235","20186574","20171234","20169874"};
+        String Password = "123456";
         try {
             // TODO: handle loggedInUser authentication
-            Student_Item_list = Student.Student_Item_list;
-
-            for (int i = 0; i < Student_Item_list.size(); i++) {
-                Club_Item = Student_Item_list.get(i);
-                String STUDENT_ID = Club_Item.get("STUDENT_ID");
-                String PASSWORD= Club_Item.get("PASSWORD");
-                if(STUDENT_ID.equals(username) && password.equals(PASSWORD)) {
+            for (int i = 0; i < 8; i++) {
+                if(StudentID[i].equals(username) && Password.equals(password)) {
                     Club_UserID.UserID = username;
                     LoggedInUser RealUser =
                             new LoggedInUser(
                                     java.util.UUID.randomUUID().toString(),
-                                    STUDENT_ID);
+                                    StudentID[i]);
                     return  new Result.Success<>(RealUser);
                 }
             }
@@ -45,8 +38,5 @@ public class LoginDataSource {
 
     public void logout() {
         // TODO: revoke authentication
-    }
-    public String Seed(String ID){
-        return ID;
     }
 }

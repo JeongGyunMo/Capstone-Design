@@ -21,8 +21,9 @@ import java.util.HashMap;
 import static java.lang.Thread.sleep;
 
 public class Club_page extends AppCompatActivity {
-    HashMap<String, String> Club_Item = new HashMap<String, String>();
-    ArrayList<HashMap<String, String>> Club_Item_list;
+    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname};
+    //HashMap<String, String> Club_Item = new HashMap<String, String>();
+    //ArrayList<HashMap<String, String>> Club_Item_list;
     Button button1;
     /*  Button button2;
       Button button3;
@@ -33,10 +34,14 @@ public class Club_page extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clubpage);
-
+        for (int i = 0; i < 4; i++) {
+            ImageView imageView1 = (ImageView) findViewById(R.id.imageView) ;
+            imageView1.setImageResource(img[ClubPositon.position]);
+        }
+        /*
         Club_Item_list = Club.Club_Item_list;
         Image_File ht;
-        for (int i = 0; i < Club_Item_list.size(); i++) {
+        for (int i = 0; i < 4; i++) {
             Club_Item = Club_Item_list.get(i);
             if(Club_Item.get("CLUB_ID").equals(ClubPositon.position)) {
                 String url = Club_Item.get("INTRO_FILE_NM");
@@ -51,7 +56,7 @@ public class Club_page extends AppCompatActivity {
                 imageView1.setImageBitmap(ht.bitmap);
             }
         }
-
+*/
         button1 = (Button) findViewById(R.id.button1);
         button1.setOnClickListener(new Button.OnClickListener() {
             @Override

@@ -3,6 +3,7 @@ package com.example.clubmanagement.Fragment;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,8 +36,11 @@ public class PageTwoFragment extends Fragment {
     public ListView listview;
     private ListViewAdapter adapter;
     int Code;
-    HashMap<String, String> Club_Item = new HashMap<String, String>();
-    ArrayList<HashMap<String, String>> Club_Item_list;
+    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname};
+    private String[] ClubName = {"Hallym","팬타곤","일레븐","노네임"};
+    private String[] Context = {"한림대학교를 자랑하기 위해서 만들었습니다.","공대의 농구 실력을 위해서 만들었습니다.","공학 공부를 위해서 만들었습니다.","공대의 축구 실력을 위해서 만들었습니다."};
+    //HashMap<String, String> Club_Item = new HashMap<String, String>();
+    //ArrayList<HashMap<String, String>> Club_Item_list;
     //ClubData CdTwo = new ClubData();
     TextView txtResult;
     Button applyUp;
@@ -97,7 +101,7 @@ public class PageTwoFragment extends Fragment {
                     Cp.image = (BitmapDrawable) Vo.getImg();
                     Intent intent = new Intent(getActivity(), ApplyActivity.class);
 
-                    intent.putExtra("CLUB_ID",Club_Item.get("CLUB_ID"));
+                    //intent.putExtra("CLUB_ID",Club_Item.get("CLUB_ID"));
                     startActivityForResult(intent, 1);
                 }
                 else{
@@ -117,7 +121,13 @@ public class PageTwoFragment extends Fragment {
             }
         }
     }
+    private void DataInput(int Code) {
+        listview.setAdapter(adapter);
 
+            if(Code == 0||Code == 6) {
+                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[0]), ClubName[0], Context[0]);
+        }
+/*
     private void DataInput(int Code) {
         listview.setAdapter(adapter);
         Club_Item_list = Club.Club_Item_list;
@@ -161,6 +171,6 @@ public class PageTwoFragment extends Fragment {
                     adapter.addVO(Cp.image, Club_Item.get("CLUB_NM"), Club_Item.get("INTRO_CONT"));
                 }
             }
-        }
+        }*/
     }
 }

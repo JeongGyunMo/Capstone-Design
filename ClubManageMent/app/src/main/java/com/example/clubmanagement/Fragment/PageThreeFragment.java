@@ -40,8 +40,11 @@ public class PageThreeFragment extends Fragment {
     private ListView listview;
     private ListViewAdapter adapter;
     int Code = 0;
-    HashMap<String, String> Club_Item = new HashMap<String, String>();
-    ArrayList<HashMap<String, String>> Club_Item_list;
+    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname};
+    private String[] ClubName = {"Hallym","팬타곤","일레븐","노네임"};
+    private String[] Context = {"한림대학교를 자랑하기 위해서 만들었습니다.","공대의 농구 실력을 위해서 만들었습니다.","공학 공부를 위해서 만들었습니다.","공대의 축구 실력을 위해서 만들었습니다."};
+    //HashMap<String, String> Club_Item = new HashMap<String, String>();
+    //ArrayList<HashMap<String, String>> Club_Item_list;
     TextView txtResult;
     Button applyUp;
     ClubPoster Cp;
@@ -118,7 +121,25 @@ public class PageThreeFragment extends Fragment {
             }
         }
     }
+    private void DataInput(int Code) {
+        listview.setAdapter(adapter);
+        if(flag) {
+            adapter.getClass();
+        }
+        flag = true;
+        if(Code == 0) {
+            for (int i = 1; i < 4; i++) {
+                adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[i]), ClubName[i], Context[i]);
+            }
+        }else if(Code == 1){
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[3]), ClubName[3], Context[3]);
+        }else if(Code == 2){
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[1]), ClubName[1], Context[1]);
+            adapter.addVO(ContextCompat.getDrawable(this.getActivity(), img[2]), ClubName[2], Context[2]);
+        }
+    }
 
+/*
     private void DataInput(int Code) {
         listview.setAdapter(adapter);
         if(flag) {
@@ -167,5 +188,5 @@ public class PageThreeFragment extends Fragment {
                 }
             }
         }
-    }
+    }*/
 }
