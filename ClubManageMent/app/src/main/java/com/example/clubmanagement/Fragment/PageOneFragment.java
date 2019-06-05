@@ -70,7 +70,6 @@ public class PageOneFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), (position+1) +"번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
                 ClubPositon.position = position;
                 startActivity(new Intent(getActivity(), Club_page.class));
             }

@@ -27,10 +27,10 @@
         <activity android:name=".ClubPage.Club_page"/>
         <activity android:name=".ClubPage.Club_page_member"/>
         <activity android:name=".Restaurant.Restaurant_Activity"/>
-
-
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permissoin android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 </manifest>

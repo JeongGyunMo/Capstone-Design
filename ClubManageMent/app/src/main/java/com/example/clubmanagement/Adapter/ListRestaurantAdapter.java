@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.clubmanagement.ListVO.ListVO_Restaurant;
@@ -15,13 +14,11 @@ import java.util.ArrayList;
 
 public class ListRestaurantAdapter extends BaseAdapter {
 
-    private ArrayList<ListVO_Restaurant> listVO = new ArrayList<ListVO_Restaurant>();
+    private ArrayList<ListVO_Restaurant> listVO_Res = new ArrayList<ListVO_Restaurant>();
 
-    public ListRestaurantAdapter() {
-    }
     @Override
     public int getCount() {
-        return listVO.size();
+        return listVO_Res.size();
     }
 
     // ** 이 부분에서 리스트뷰에 데이터를 넣어줌 **
@@ -33,22 +30,17 @@ public class ListRestaurantAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.restaurant_page, parent, false);
+            convertView = inflater.inflate(R.layout.restaurant_listview, parent, false);
         }
 
         Log.d("error:","오류발생");
-        //ImageView image = (ImageView) convertView.findViewById(R.id.img);
         TextView name = (TextView) convertView.findViewById(R.id.store);
         TextView number = (TextView) convertView.findViewById(R.id.number);
 
-        final ListVO_Restaurant listViewItem = listVO.get(position);
+        final ListVO_Restaurant listViewItem = listVO_Res.get(position);
 
-        // 아이템 내 각 위젯에 데이터 반영
-        //   image.setImageDrawable(listViewItem.getImg());
         name.setText(listViewItem.getStore());
         number.setText(listViewItem.getNumber());
-        //Toast.makeText(context, (pos + 1) + "번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
-        //Club_Home ch = new Club_Home();
 
         return convertView;
     }
@@ -62,7 +54,7 @@ public class ListRestaurantAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return listVO.get(position);
+        return listVO_Res.get(position);
     }
 
     // 데이터값 넣어줌
@@ -73,6 +65,6 @@ public class ListRestaurantAdapter extends BaseAdapter {
         //  item.setImg(icon);
         item.setStore(name);
         item.setNUmber(number);
-        listVO.add(item);
+        listVO_Res.add(item);
     }
 }
