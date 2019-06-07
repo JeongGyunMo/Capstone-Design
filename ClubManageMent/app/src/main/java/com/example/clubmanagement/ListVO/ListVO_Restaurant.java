@@ -1,15 +1,17 @@
 package com.example.clubmanagement.ListVO;
 
+import android.widget.Button;
+
 public class ListVO_Restaurant {
 
     private String store;
-    private String number;
+    private Button number;
 
     public String getStore(){ return store; }
 
     public void setStore(String store){ this.store = store; }
 
-    public String getNumber(){ return number; }
+    public Button getNumber(){ return number; }
 
-    public void setNUmber(String number){ this.number = number; }
+    public void setNUmber(Button number){ this.number = number; }
 }

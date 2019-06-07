@@ -1,11 +1,11 @@
 package com.example.clubmanagement.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.clubmanagement.ListVO.ListVO_Restaurant;
@@ -13,7 +13,7 @@ import com.example.clubmanagement.R;
 import java.util.ArrayList;
 
 public class ListRestaurantAdapter extends BaseAdapter {
-
+    public Button number;
     private ArrayList<ListVO_Restaurant> listVO_Res = new ArrayList<ListVO_Restaurant>();
 
     @Override
@@ -33,14 +33,13 @@ public class ListRestaurantAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.restaurant_listview, parent, false);
         }
 
-        Log.d("error:","오류발생");
         TextView name = (TextView) convertView.findViewById(R.id.store);
-        TextView number = (TextView) convertView.findViewById(R.id.number);
+        Button number = (Button) convertView.findViewById(R.id.number);
 
         final ListVO_Restaurant listViewItem = listVO_Res.get(position);
 
         name.setText(listViewItem.getStore());
-        number.setText(listViewItem.getNumber());
+        number.setText(listViewItem.getNumber().getText());
 
         return convertView;
     }
@@ -58,7 +57,7 @@ public class ListRestaurantAdapter extends BaseAdapter {
     }
 
     // 데이터값 넣어줌
-    public void addVO(String name, String number) {
+    public void addVO(String name, Button number) {
 
         ListVO_Restaurant item = new ListVO_Restaurant();
 
