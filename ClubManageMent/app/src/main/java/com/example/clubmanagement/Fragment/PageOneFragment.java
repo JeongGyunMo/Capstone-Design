@@ -70,7 +70,13 @@ public class PageOneFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ClubPositon.position = position;
+                if(position == 0) {
+                    ClubPositon.position = 0;
+                }else if(position == 1){
+                    ClubPositon.position = 10;
+                }else if(position == 2){
+                    ClubPositon.position = 4;
+                }
                 startActivity(new Intent(getActivity(), Club_page.class));
             }
         });

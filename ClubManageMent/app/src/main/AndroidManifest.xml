@@ -29,6 +29,7 @@
         <activity android:name=".ClubPage.Club_Apply_member"/>
         <activity android:name=".Restaurant.Restaurant_Activity"/>
         <activity android:name=".Item.Item_Activity"/>
+        <activity android:name=".Item.Itempopup" android:theme="@android:style/Theme.Dialog"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

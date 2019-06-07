@@ -23,7 +23,7 @@ import java.util.HashMap;
 import static java.lang.Thread.sleep;
 
 public class Club_page extends AppCompatActivity {
-    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname};
+    private int[] img = {R.drawable.hallym,R.drawable.light,R.drawable.eleven,R.drawable.noname,R.drawable.video,R.drawable.cloud,R.drawable.general,R.drawable.wings,R.drawable.heart,R.drawable.shop,R.drawable.triangle,R.drawable.waterdrop};
     //HashMap<String, String> Club_Item = new HashMap<String, String>();
     //ArrayList<HashMap<String, String>> Club_Item_list;
     Button button1;
@@ -37,10 +37,10 @@ public class Club_page extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clubpage);
-        for (int i = 0; i < 4; i++) {
+       // for (int i = 0; i < 4; i++) {
             ImageView imageView1 = (ImageView) findViewById(R.id.imageView) ;
             imageView1.setImageResource(img[ClubPositon.position]);
-        }
+      //  }
         /*
         Club_Item_list = Club.Club_Item_list;
         Image_File ht;
