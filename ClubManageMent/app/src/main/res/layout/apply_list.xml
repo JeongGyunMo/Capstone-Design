@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.PageOneFragment">
+    tools:context=".ClubPage.Club_Apply_member">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,17 +17,37 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="583dp"
                 android:orientation="horizontal">
 
                 <ListView
                     android:id="@+id/Apply_ListView"
                     android:layout_width="match_parent"
-                    android:layout_height="618dp"
-                    android:listSelector="#E0F7D2"/>
-                    />
+                    android:layout_height="582dp"
+                    android:listSelector="#E0F7D2">
+
+                </ListView>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/deny"
+                    android:layout_width="206dp"
+                    android:layout_height="68dp"
+                    android:text="거절" />
+
+                <Button
+                    android:id="@+id/accept"
+                    android:layout_width="206dp"
+                    android:layout_height="68dp"
+                    android:text="승인" />
+            </LinearLayout>
+
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
